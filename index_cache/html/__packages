@@ -1,0 +1,16 @@
+ISLR2
+dplyr
+tidyr
+readr
+purrr
+repr
+tidyverse
+ggplot2
+tibble
+stringr
+forcats
+kableExtra
+IRdisplay
+torch
+torchvision
+luz

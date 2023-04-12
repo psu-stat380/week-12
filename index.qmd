@@ -1,9 +1,5 @@
 ---
-jupyter: ir42
----
-
-<!-- ---
-title: "Week 6"
+title: "Week 12"
 title-block-banner: true
 title-block-style: default
 execute:
@@ -11,7 +7,7 @@ execute:
   cache: true
 format: html
 # format: pdf
---- -->
+---
 
 ```{r}
 #| tags: []
@@ -23,7 +19,7 @@ dir <- "~/work/courses/stat380/weeks/week-12/"
 
 #### Packages we will require this week
 
-```{r}
+```{r warnings=F, message=F, results='hide'}
 #| tags: []
 #| vscode: {languageId: r}
 packages <- c(
@@ -283,26 +279,17 @@ transform <- function(x) x %>%
 #| vscode: {languageId: r}
 dir <- "./mnist"
 
-mnist_dataset2 <- torch::dataset(
-  inherit = mnist_dataset,
-  .getitem = function(i) {
-    output <- super$.getitem(i)
-    output$y <- output$x
-    output
-  }
+train_ds <- mnist_dataset(
+    root = dir,
+    train = TRUE,
+    download = TRUE,
+    transform = transform
 )
-
-train_ds <- mnist_dataset2(
-  dir,
-  download = TRUE,
-  transform = transform
-)
-
-test_ds <- mnist_dataset2(
-  dir,
-  download = TRUE,
-  train = FALSE,
-  transform = transform
+test_ds <- mnist_dataset(
+    root = dir,
+    train = FALSE,
+    download = TRUE,
+    transform = transform
 )
 ```
 
@@ -348,8 +335,8 @@ for(iter in 1:9){
 ```{r}
 #| tags: []
 #| vscode: {languageId: r}
-train_dl <- dataloader(train_ds, batch_size = 64, shuffle = TRUE)
-test_dl <- dataloader(test_ds, batch_size = 64)
+train_dl <- dataloader(train_ds, batch_size = 1024, shuffle = TRUE)
+test_dl <- dataloader(test_ds, batch_size = 1024)
 ```
 
 ```{r}
@@ -359,7 +346,7 @@ NNet_10 <- nn_module(
   initialize = function(p, q1, q2, q3, o) {
     self$hidden1 <- nn_linear(p, q1)
     self$hidden2 <- nn_linear(q1, q2)
-    self$hidden3 <- nn_linear(q1, q3)
+    self$hidden3 <- nn_linear(q2, q3)
     self$OUTPUT <- nn_linear(q3, o)
     self$activation <- nn_relu()
   },
@@ -393,20 +380,14 @@ fit_nn <- NNet_10 %>%
     #
     # Set the hyperparameters
     #
-    set_hparams(p=28*28, q1=256, q2=128, q3=10) %>% 
+    set_hparams(p=28*28, q1=256, q2=128, q3=64, o=10) %>% 
     #
     # Fit the model
     #
     fit(
-        #
-        # Training Data
-        #
         epochs = 10,
-        # data = train_dl,
+        data = train_dl,
         # valid_data = test_dl,
-        data = train_ds,
-        valid_data = 0.2,
-        dataloader_options = list(batch_size = 64),
         verbose=TRUE
     )
 ```
@@ -420,3 +401,27 @@ NN10_preds <- fit_nn %>%
   as_array()
 ```
 
+
+::: {.callout-tip}
+#### Accuracy
+
+```{r}
+mean(NN10_preds == test_ds$targets)
+```
+:::
+
+::: {.callout-tip}
+## Confusion matrix
+
+```{r}
+table(NN10_preds, test_ds$targets)
+```
+
+
+```{r}
+caret::confusionMatrix(
+  NN10_preds %>% as.factor, 
+  test_ds$targets %>% as.factor
+)
+```
+:::
