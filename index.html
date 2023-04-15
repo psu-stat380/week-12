@@ -97,6 +97,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <link href="index_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="index_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
@@ -125,13 +126,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 
-<div class="cell" data-tags="[]" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-hash="index_cache/html/unnamed-chunk-1_b97d916934698c2ecd936f739c0eecc3">
+<div class="cell" data-tags="[]" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-hash="index_cache/html/unnamed-chunk-1_51e07245a54530d5214e1671b12a0ac4">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>dir <span class="ot">&lt;-</span> <span class="st">"~/work/courses/stat380/weeks/week-12/"</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># renv::activate(dir)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="packages-we-will-require-this-week" class="level4">
 <h4 class="anchored" data-anchor-id="packages-we-will-require-this-week">Packages we will require this week</h4>
-<div class="cell" data-warnings="false" data-tags="[]" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-hash="index_cache/html/unnamed-chunk-2_8258053ac0c5ed714c8b2c4e90e0cb45">
+<div class="cell" data-warnings="false" data-tags="[]" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-hash="index_cache/html/unnamed-chunk-2_ef5e7cf08715fbe3c87192f996d2ccd5">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>packages <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Old packages</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"ISLR2"</span>,</span>
@@ -167,7 +168,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="titanic" class="level2">
 <h2 class="anchored" data-anchor-id="titanic">Titanic</h2>
-<div class="cell" data-tags="[]" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-hash="index_cache/html/unnamed-chunk-3_ad59769af3152b933acadb96d1c52aac">
+<div class="cell" data-tags="[]" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-hash="index_cache/html/unnamed-chunk-3_e3636d7f6d171f3f3ae1eb3ea6de1466">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">"https://web.stanford.edu/class/archive/cs/cs109/cs109.1166/stuff/titanic.csv"</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(url) <span class="sc">%&gt;%</span></span>
@@ -205,7 +206,7 @@ dbl (6): Survived, Pclass, Age, Siblings/Spouses Aboard, Parents/Children Ab...
 </section>
 <section id="breast-cancer-prediction" class="level2">
 <h2 class="anchored" data-anchor-id="breast-cancer-prediction">Breast Cancer Prediction</h2>
-<div class="cell" data-tags="[]" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-hash="index_cache/html/unnamed-chunk-4_cdbc371f703f46e925e39ea9c8a684ae">
+<div class="cell" data-tags="[]" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-hash="index_cache/html/unnamed-chunk-4_b4a6a25f36b98c9a283ff3448041bb5d">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># url &lt;- "https://archive.ics.uci.edu/ml/machine-learning-databases/breast-cancer-wisconsin/wdbc.data"</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># col_names &lt;- c("id", "diagnosis", paste0("feat", 1:30))</span></span>
@@ -222,7 +223,7 @@ dbl (6): Survived, Pclass, Age, Siblings/Spouses Aboard, Parents/Children Ab...
 </div>
 <section id="traintest-split" class="level3">
 <h3 class="anchored" data-anchor-id="traintest-split">Train/Test Split</h3>
-<div class="cell" data-tags="[]" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-hash="index_cache/html/unnamed-chunk-5_08ae955766412c728ab8ff19a6b3baf4">
+<div class="cell" data-tags="[]" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-hash="index_cache/html/unnamed-chunk-5_28234c30388f8fdb06c9e7598e47f9b7">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>k <span class="ot">&lt;-</span> <span class="dv">5</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>test_ind <span class="ot">&lt;-</span> <span class="fu">sample</span>(</span>
@@ -231,7 +232,7 @@ dbl (6): Survived, Pclass, Age, Siblings/Spouses Aboard, Parents/Children Ab...
 <span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">replace=</span><span class="cn">FALSE</span></span>
 <span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-tags="[]" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-hash="index_cache/html/unnamed-chunk-6_7e8aee90961e5e2976c71b2bd67f9fe2">
+<div class="cell" data-tags="[]" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-hash="index_cache/html/unnamed-chunk-6_77814d28e59f165061115fb59af0f5e0">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>df_train <span class="ot">&lt;-</span> df[<span class="sc">-</span>test_ind, ]</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>df_test  <span class="ot">&lt;-</span> df[test_ind, ]</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -243,7 +244,7 @@ dbl (6): Survived, Pclass, Age, Siblings/Spouses Aboard, Parents/Children Ab...
 </section>
 <section id="benchmark-with-logistic-regression" class="level3">
 <h3 class="anchored" data-anchor-id="benchmark-with-logistic-regression">Benchmark with Logistic Regression</h3>
-<div class="cell" data-tags="[]" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-hash="index_cache/html/unnamed-chunk-7_b243dfdac25e3b0ebde671204f373cfc">
+<div class="cell" data-tags="[]" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-hash="index_cache/html/unnamed-chunk-7_beadf8b0e4d62e0641ab83b31a4e8acf">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>fit_glm <span class="ot">&lt;-</span> <span class="fu">glm</span>(</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    y <span class="sc">~</span> ., </span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    df_train <span class="sc">%&gt;%</span> <span class="fu">mutate_at</span>(<span class="st">"y"</span>, factor), </span>
@@ -261,14 +262,14 @@ dbl (6): Survived, Pclass, Age, Siblings/Spouses Aboard, Parents/Children Ab...
 <div class="cell-output cell-output-stdout">
 <pre><code>         
 glm_preds   0   1
-        0 100  31
-        1  10  36</code></pre>
+        0 103  21
+        1  11  42</code></pre>
 </div>
 </div>
 </section>
 <section id="neural-net-model" class="level3">
 <h3 class="anchored" data-anchor-id="neural-net-model">Neural Net Model</h3>
-<div class="cell" data-tags="[]" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-hash="index_cache/html/unnamed-chunk-8_c590c9f2e1ec526e0735a18dd5408451">
+<div class="cell" data-tags="[]" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-hash="index_cache/html/unnamed-chunk-8_36cd95120aaec2d43d8220ccbd695ae5">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>NNet <span class="ot">&lt;-</span> <span class="fu">nn_module</span>(</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">initialize =</span> <span class="cf">function</span>(p, q1, q2, q3) {  </span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    self<span class="sc">$</span>hidden1 <span class="ot">&lt;-</span> <span class="fu">nn_linear</span>(p, q1)</span>
@@ -291,10 +292,10 @@ glm_preds   0   1
 </section>
 <section id="fit-using-luz" class="level3">
 <h3 class="anchored" data-anchor-id="fit-using-luz">Fit using Luz</h3>
-<div class="cell" data-tags="[]" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-hash="index_cache/html/unnamed-chunk-9_355d15dd89f2fca4d2ca823b07351a75">
+<div class="cell" data-tags="[]" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-hash="index_cache/html/unnamed-chunk-9_22567736472e9224970d87e9dec4f8e3">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>M <span class="ot">&lt;-</span> <span class="fu">model.matrix</span>(y <span class="sc">~</span> <span class="dv">0</span> <span class="sc">+</span> ., <span class="at">data =</span> df_train)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-tags="[]" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-hash="index_cache/html/unnamed-chunk-10_07df2a7939d9ab2176fd24994e06cb93">
+<div class="cell" data-tags="[]" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-hash="index_cache/html/unnamed-chunk-10_834d0b21468ad4d5f13340998b65c80c">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>fit_nn <span class="ot">&lt;-</span> NNet <span class="sc">%&gt;%</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">#</span></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Setup the model</span></span>
@@ -328,164 +329,164 @@ glm_preds   0   1
 <span id="cb15-31"><a href="#cb15-31" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Epoch 1/50
-Train metrics: Loss: 0.7124 - Acc: 12.3577
-Valid metrics: Loss: 0.63 - Acc: 11.774
+Train metrics: Loss: 0.8678 - Acc: 12.4648
+Valid metrics: Loss: 0.623 - Acc: 10.6271
 Epoch 2/50
-Train metrics: Loss: 0.6207 - Acc: 12.3211
-Valid metrics: Loss: 0.5873 - Acc: 11.774
+Train metrics: Loss: 0.6142 - Acc: 12.4648
+Valid metrics: Loss: 0.6183 - Acc: 10.6271
 Epoch 3/50
-Train metrics: Loss: 0.6009 - Acc: 12.3211
-Valid metrics: Loss: 0.5755 - Acc: 11.774
+Train metrics: Loss: 0.5977 - Acc: 12.538
+Valid metrics: Loss: 0.5721 - Acc: 10.6271
 Epoch 4/50
-Train metrics: Loss: 0.5822 - Acc: 12.3577
-Valid metrics: Loss: 0.5377 - Acc: 11.774
+Train metrics: Loss: 0.5961 - Acc: 12.538
+Valid metrics: Loss: 0.6024 - Acc: 10.6271
 Epoch 5/50
-Train metrics: Loss: 0.5928 - Acc: 12.2113
-Valid metrics: Loss: 0.5722 - Acc: 11.774
+Train metrics: Loss: 0.5799 - Acc: 12.538
+Valid metrics: Loss: 0.5561 - Acc: 10.6271
 Epoch 6/50
-Train metrics: Loss: 0.5391 - Acc: 12.3944
-Valid metrics: Loss: 0.4866 - Acc: 11.774
+Train metrics: Loss: 0.5563 - Acc: 12.4648
+Valid metrics: Loss: 0.5445 - Acc: 10.6271
 Epoch 7/50
-Train metrics: Loss: 0.5218 - Acc: 12.3211
-Valid metrics: Loss: 0.4795 - Acc: 11.774
+Train metrics: Loss: 0.5273 - Acc: 12.4648
+Valid metrics: Loss: 0.6833 - Acc: 10.6271
 Epoch 8/50
-Train metrics: Loss: 0.5179 - Acc: 12.2479
-Valid metrics: Loss: 0.5312 - Acc: 11.774
+Train metrics: Loss: 0.5068 - Acc: 12.4282
+Valid metrics: Loss: 0.5802 - Acc: 10.6271
 Epoch 9/50
-Train metrics: Loss: 0.5125 - Acc: 12.3577
-Valid metrics: Loss: 0.499 - Acc: 11.774
+Train metrics: Loss: 0.5007 - Acc: 12.5014
+Valid metrics: Loss: 0.5069 - Acc: 10.6271
 Epoch 10/50
-Train metrics: Loss: 0.4942 - Acc: 12.3577
-Valid metrics: Loss: 0.4488 - Acc: 11.774
+Train metrics: Loss: 0.466 - Acc: 12.4648
+Valid metrics: Loss: 0.5154 - Acc: 10.6271
 Epoch 11/50
-Train metrics: Loss: 0.449 - Acc: 12.2845
-Valid metrics: Loss: 0.4396 - Acc: 11.774
+Train metrics: Loss: 0.4584 - Acc: 12.538
+Valid metrics: Loss: 0.4949 - Acc: 10.6271
 Epoch 12/50
-Train metrics: Loss: 0.454 - Acc: 12.3211
-Valid metrics: Loss: 0.465 - Acc: 11.774
+Train metrics: Loss: 0.4876 - Acc: 12.4648
+Valid metrics: Loss: 0.4747 - Acc: 10.6271
 Epoch 13/50
-Train metrics: Loss: 0.4493 - Acc: 12.2479
-Valid metrics: Loss: 0.4404 - Acc: 11.774
+Train metrics: Loss: 0.445 - Acc: 12.5014
+Valid metrics: Loss: 0.4753 - Acc: 10.6271
 Epoch 14/50
-Train metrics: Loss: 0.4481 - Acc: 12.2845
-Valid metrics: Loss: 0.4214 - Acc: 11.774
+Train metrics: Loss: 0.435 - Acc: 12.5746
+Valid metrics: Loss: 0.4825 - Acc: 10.6271
 Epoch 15/50
-Train metrics: Loss: 0.4783 - Acc: 12.2479
-Valid metrics: Loss: 0.4881 - Acc: 11.774
+Train metrics: Loss: 0.4773 - Acc: 12.4648
+Valid metrics: Loss: 0.5936 - Acc: 10.6271
 Epoch 16/50
-Train metrics: Loss: 0.431 - Acc: 12.3577
-Valid metrics: Loss: 0.4523 - Acc: 11.774
+Train metrics: Loss: 0.4739 - Acc: 12.4282
+Valid metrics: Loss: 0.4892 - Acc: 10.6271
 Epoch 17/50
-Train metrics: Loss: 0.4208 - Acc: 12.3211
-Valid metrics: Loss: 0.4376 - Acc: 11.774
+Train metrics: Loss: 0.4522 - Acc: 12.538
+Valid metrics: Loss: 0.4464 - Acc: 10.6271
 Epoch 18/50
-Train metrics: Loss: 0.4163 - Acc: 12.3211
-Valid metrics: Loss: 0.4546 - Acc: 11.774
+Train metrics: Loss: 0.4745 - Acc: 12.3915
+Valid metrics: Loss: 0.498 - Acc: 10.6271
 Epoch 19/50
-Train metrics: Loss: 0.4277 - Acc: 12.2845
-Valid metrics: Loss: 0.4091 - Acc: 11.774
+Train metrics: Loss: 0.4602 - Acc: 12.4648
+Valid metrics: Loss: 0.5364 - Acc: 10.6271
 Epoch 20/50
-Train metrics: Loss: 0.4243 - Acc: 12.3944
-Valid metrics: Loss: 0.4337 - Acc: 11.774
+Train metrics: Loss: 0.4358 - Acc: 12.5014
+Valid metrics: Loss: 0.4671 - Acc: 10.6271
 Epoch 21/50
-Train metrics: Loss: 0.4352 - Acc: 12.3211
-Valid metrics: Loss: 0.442 - Acc: 11.774
+Train metrics: Loss: 0.4379 - Acc: 12.4282
+Valid metrics: Loss: 0.4427 - Acc: 10.6271
 Epoch 22/50
-Train metrics: Loss: 0.4085 - Acc: 12.3944
-Valid metrics: Loss: 0.4069 - Acc: 11.774
+Train metrics: Loss: 0.4567 - Acc: 12.4648
+Valid metrics: Loss: 0.5017 - Acc: 10.6271
 Epoch 23/50
-Train metrics: Loss: 0.4167 - Acc: 12.2845
-Valid metrics: Loss: 0.4123 - Acc: 11.774
+Train metrics: Loss: 0.4549 - Acc: 12.4282
+Valid metrics: Loss: 0.4424 - Acc: 10.6271
 Epoch 24/50
-Train metrics: Loss: 0.4174 - Acc: 12.3944
-Valid metrics: Loss: 0.4344 - Acc: 11.774
+Train metrics: Loss: 0.4268 - Acc: 12.4648
+Valid metrics: Loss: 0.4726 - Acc: 10.6271
 Epoch 25/50
-Train metrics: Loss: 0.4405 - Acc: 12.3211
-Valid metrics: Loss: 0.4224 - Acc: 11.774
+Train metrics: Loss: 0.4442 - Acc: 12.4648
+Valid metrics: Loss: 0.4469 - Acc: 10.6271
 Epoch 26/50
-Train metrics: Loss: 0.4226 - Acc: 12.3211
-Valid metrics: Loss: 0.4656 - Acc: 11.774
+Train metrics: Loss: 0.4426 - Acc: 12.4648
+Valid metrics: Loss: 0.4403 - Acc: 10.6271
 Epoch 27/50
-Train metrics: Loss: 0.408 - Acc: 12.2479
-Valid metrics: Loss: 0.4098 - Acc: 11.774
+Train metrics: Loss: 0.4282 - Acc: 12.5746
+Valid metrics: Loss: 0.4923 - Acc: 10.6271
 Epoch 28/50
-Train metrics: Loss: 0.3908 - Acc: 12.3577
-Valid metrics: Loss: 0.4512 - Acc: 11.774
+Train metrics: Loss: 0.4171 - Acc: 12.4648
+Valid metrics: Loss: 0.4357 - Acc: 10.6271
 Epoch 29/50
-Train metrics: Loss: 0.486 - Acc: 12.3211
-Valid metrics: Loss: 0.4743 - Acc: 11.774
+Train metrics: Loss: 0.4133 - Acc: 12.5014
+Valid metrics: Loss: 0.4179 - Acc: 10.6271
 Epoch 30/50
-Train metrics: Loss: 0.4701 - Acc: 12.3577
-Valid metrics: Loss: 0.4464 - Acc: 11.774
+Train metrics: Loss: 0.4282 - Acc: 12.5014
+Valid metrics: Loss: 0.4276 - Acc: 10.6271
 Epoch 31/50
-Train metrics: Loss: 0.4317 - Acc: 12.3577
-Valid metrics: Loss: 0.402 - Acc: 11.774
+Train metrics: Loss: 0.4045 - Acc: 12.5014
+Valid metrics: Loss: 0.4455 - Acc: 10.6271
 Epoch 32/50
-Train metrics: Loss: 0.4166 - Acc: 12.2845
-Valid metrics: Loss: 0.4609 - Acc: 11.774
+Train metrics: Loss: 0.4167 - Acc: 12.5014
+Valid metrics: Loss: 0.4235 - Acc: 10.6271
 Epoch 33/50
-Train metrics: Loss: 0.4087 - Acc: 12.3211
-Valid metrics: Loss: 0.4152 - Acc: 11.774
+Train metrics: Loss: 0.4186 - Acc: 12.3549
+Valid metrics: Loss: 0.486 - Acc: 10.6271
 Epoch 34/50
-Train metrics: Loss: 0.4076 - Acc: 12.2479
-Valid metrics: Loss: 0.4122 - Acc: 11.774
+Train metrics: Loss: 0.4434 - Acc: 12.5014
+Valid metrics: Loss: 0.4867 - Acc: 10.6271
 Epoch 35/50
-Train metrics: Loss: 0.4043 - Acc: 12.3577
-Valid metrics: Loss: 0.3982 - Acc: 11.774
+Train metrics: Loss: 0.4322 - Acc: 12.538
+Valid metrics: Loss: 0.4267 - Acc: 10.6271
 Epoch 36/50
-Train metrics: Loss: 0.4192 - Acc: 12.3211
-Valid metrics: Loss: 0.4049 - Acc: 11.774
+Train metrics: Loss: 0.4127 - Acc: 12.4282
+Valid metrics: Loss: 0.4094 - Acc: 10.6271
 Epoch 37/50
-Train metrics: Loss: 0.4141 - Acc: 12.2479
-Valid metrics: Loss: 0.4272 - Acc: 11.774
+Train metrics: Loss: 0.3993 - Acc: 12.4282
+Valid metrics: Loss: 0.4909 - Acc: 10.6271
 Epoch 38/50
-Train metrics: Loss: 0.4228 - Acc: 12.3944
-Valid metrics: Loss: 0.4186 - Acc: 11.774
+Train metrics: Loss: 0.4065 - Acc: 12.5014
+Valid metrics: Loss: 0.4243 - Acc: 10.6271
 Epoch 39/50
-Train metrics: Loss: 0.4483 - Acc: 12.3211
-Valid metrics: Loss: 0.5525 - Acc: 11.774
+Train metrics: Loss: 0.4057 - Acc: 12.538
+Valid metrics: Loss: 0.4768 - Acc: 10.6271
 Epoch 40/50
-Train metrics: Loss: 0.4421 - Acc: 12.2479
-Valid metrics: Loss: 0.4258 - Acc: 11.774
+Train metrics: Loss: 0.3991 - Acc: 12.5014
+Valid metrics: Loss: 0.501 - Acc: 10.6271
 Epoch 41/50
-Train metrics: Loss: 0.4174 - Acc: 12.2845
-Valid metrics: Loss: 0.4088 - Acc: 11.774
+Train metrics: Loss: 0.4096 - Acc: 12.4648
+Valid metrics: Loss: 0.4211 - Acc: 10.6271
 Epoch 42/50
-Train metrics: Loss: 0.4026 - Acc: 12.2479
-Valid metrics: Loss: 0.3992 - Acc: 11.774
+Train metrics: Loss: 0.3895 - Acc: 12.5014
+Valid metrics: Loss: 0.4193 - Acc: 10.6271
 Epoch 43/50
-Train metrics: Loss: 0.3968 - Acc: 12.3577
-Valid metrics: Loss: 0.4439 - Acc: 11.774
+Train metrics: Loss: 0.3842 - Acc: 12.5746
+Valid metrics: Loss: 0.4429 - Acc: 10.6271
 Epoch 44/50
-Train metrics: Loss: 0.3967 - Acc: 12.3577
-Valid metrics: Loss: 0.3966 - Acc: 11.774
+Train metrics: Loss: 0.385 - Acc: 12.5746
+Valid metrics: Loss: 0.4598 - Acc: 10.6271
 Epoch 45/50
-Train metrics: Loss: 0.4018 - Acc: 12.2845
-Valid metrics: Loss: 0.4192 - Acc: 11.774
+Train metrics: Loss: 0.3937 - Acc: 12.4648
+Valid metrics: Loss: 0.4638 - Acc: 10.6271
 Epoch 46/50
-Train metrics: Loss: 0.3923 - Acc: 12.2845
-Valid metrics: Loss: 0.4323 - Acc: 11.774
+Train metrics: Loss: 0.3975 - Acc: 12.538
+Valid metrics: Loss: 0.4546 - Acc: 10.6271
 Epoch 47/50
-Train metrics: Loss: 0.407 - Acc: 12.2113
-Valid metrics: Loss: 0.4145 - Acc: 11.774
+Train metrics: Loss: 0.4128 - Acc: 12.4282
+Valid metrics: Loss: 0.5144 - Acc: 10.6271
 Epoch 48/50
-Train metrics: Loss: 0.38 - Acc: 12.3211
-Valid metrics: Loss: 0.4249 - Acc: 11.774
+Train metrics: Loss: 0.385 - Acc: 12.4648
+Valid metrics: Loss: 0.4866 - Acc: 10.6271
 Epoch 49/50
-Train metrics: Loss: 0.3889 - Acc: 12.2113
-Valid metrics: Loss: 0.4311 - Acc: 11.774
+Train metrics: Loss: 0.4097 - Acc: 12.538
+Valid metrics: Loss: 0.4771 - Acc: 10.6271
 Epoch 50/50
-Train metrics: Loss: 0.3903 - Acc: 12.3577
-Valid metrics: Loss: 0.4565 - Acc: 11.774</code></pre>
+Train metrics: Loss: 0.386 - Acc: 12.5014
+Valid metrics: Loss: 0.4862 - Acc: 10.6271</code></pre>
 </div>
 </div>
-<div class="cell" data-tags="[]" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-hash="index_cache/html/unnamed-chunk-11_b3f058cde6718088ae31f618ba7d97d4">
+<div class="cell" data-tags="[]" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-hash="index_cache/html/unnamed-chunk-11_bd8f17487cf1f1d8dbe13d487b8962f4">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(fit_nn)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="index_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<div class="cell" data-tags="[]" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-hash="index_cache/html/unnamed-chunk-12_66b47ae751ed98ef27401b86eb177b2b">
+<div class="cell" data-tags="[]" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-hash="index_cache/html/unnamed-chunk-12_d35d6aa43f997e910370cf7c1d1c37c6">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>nn_test <span class="ot">&lt;-</span> <span class="fu">predict</span>(</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    fit_nn, </span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">model.matrix</span>(y <span class="sc">~</span> . <span class="sc">-</span> <span class="dv">1</span>, <span class="at">data =</span> df_test)</span>
@@ -497,25 +498,25 @@ Valid metrics: Loss: 0.4565 - Acc: 11.774</code></pre>
 <div class="cell-output cell-output-stdout">
 <pre><code>        
 nn_preds  0  1
-       0 93 18
-       1 17 49</code></pre>
+       0 88 13
+       1 26 50</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(nn_preds <span class="sc">==</span> df_test<span class="sc">$</span>y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.8022599</code></pre>
+<pre><code>[1] 0.779661</code></pre>
 </div>
 </div>
-<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-hash="index_cache/html/unnamed-chunk-13_047e3dc87dc90577aff1fae695bdfc38">
+<div class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-hash="index_cache/html/unnamed-chunk-13_a1f44589c48163bbeacedfc17b18b7cc">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(glm_preds, df_test<span class="sc">$</span>y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>         
 glm_preds   0   1
-        0 100  31
-        1  10  36</code></pre>
+        0 103  21
+        1  11  42</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(glm_preds <span class="sc">==</span> df_test<span class="sc">$</span>y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.7683616</code></pre>
+<pre><code>[1] 0.819209</code></pre>
 </div>
 </div>
 <p><br><br><br><br></p>
@@ -539,16 +540,16 @@ glm_preds   0   1
 <li><p><strong>Standardization:</strong> consistent data format across various machine learning projects.</p></li>
 </ul>
 </blockquote>
-<div class="cell" data-tags="[]" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-hash="index_cache/html/unnamed-chunk-14_7502643dc83a1e5f3b7702a5849a1028">
+<div class="cell" data-tags="[]" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-hash="index_cache/html/unnamed-chunk-14_fd9e898b584039a274e4d170019b67f1">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ?dataloader</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-tags="[]" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-hash="index_cache/html/unnamed-chunk-15_fcb0a96242e53b47cf9c65e57b1a6318">
+<div class="cell" data-tags="[]" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-hash="index_cache/html/unnamed-chunk-15_098076ac7a23fb1e2c618906c1ce1992">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>transform <span class="ot">&lt;-</span> <span class="cf">function</span>(x) x <span class="sc">%&gt;%</span> </span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">torch_tensor</span>() <span class="sc">%&gt;%</span> </span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">torch_flatten</span>() <span class="sc">%&gt;%</span> </span>
 <span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">torch_div</span>(<span class="dv">255</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-tags="[]" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-hash="index_cache/html/unnamed-chunk-16_7e2ad39b13b9839f90761ded19980699">
+<div class="cell" data-tags="[]" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-hash="index_cache/html/unnamed-chunk-16_8205e061192d4371d36bbf89fe476207">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>dir <span class="ot">&lt;-</span> <span class="st">"./mnist"</span></span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>train_ds <span class="ot">&lt;-</span> <span class="fu">mnist_dataset</span>(</span>
@@ -564,7 +565,7 @@ glm_preds   0   1
 <span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">transform =</span> transform</span>
 <span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-tags="[]" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-hash="index_cache/html/unnamed-chunk-17_10c690556098a6aa0b77a245dd43cb10">
+<div class="cell" data-tags="[]" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-hash="index_cache/html/unnamed-chunk-17_8e66bdd517852649ee961b412e043703">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(train_ds)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "environment"</code></pre>
@@ -664,28 +665,25 @@ glm_preds   0   1
 [28,]     0     0     0</code></pre>
 </div>
 </div>
-<div class="cell" data-tags="[]" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-hash="index_cache/html/unnamed-chunk-18_4e82059ef973e954ca5c2477a29211c5">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">repr.plot.width=</span><span class="dv">10</span>, <span class="at">repr.plot.height=</span><span class="dv">10</span>)</span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(train_ds), <span class="dv">1</span>)</span>
-<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> train_ds<span class="sc">$</span>data[i, ,] <span class="sc">%&gt;%</span> t</span>
-<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a><span class="fu">image</span>(x[<span class="dv">1</span><span class="sc">:</span><span class="dv">28</span>, <span class="dv">28</span><span class="sc">:</span><span class="dv">1</span>], <span class="at">useRaster=</span><span class="cn">TRUE</span>, <span class="at">axes=</span><span class="cn">FALSE</span>, <span class="at">col=</span><span class="fu">gray.colors</span>(<span class="dv">1000</span>), <span class="at">main =</span> train_ds<span class="sc">$</span>targets[i]<span class="sc">-</span><span class="dv">1</span> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-tags="[]" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-hash="index_cache/html/fig.width- 7, fig.height- 7_f7d781f5a40b7278a9d451bac585e80b">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>i <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(train_ds), <span class="dv">1</span>)</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> train_ds<span class="sc">$</span>data[i, ,] <span class="sc">%&gt;%</span> t</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="fu">image</span>(x[<span class="dv">1</span><span class="sc">:</span><span class="dv">28</span>, <span class="dv">28</span><span class="sc">:</span><span class="dv">1</span>], <span class="at">useRaster=</span><span class="cn">TRUE</span>, <span class="at">axes=</span><span class="cn">FALSE</span>, <span class="at">col=</span><span class="fu">gray.colors</span>(<span class="dv">1000</span>), <span class="at">main =</span> train_ds<span class="sc">$</span>targets[i]<span class="sc">-</span><span class="dv">1</span> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid" width="672"></p>
+<p><img src="index_files/figure-html/fig.width-%207,%20fig.height-%207-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<div class="cell" data-tags="[]" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-hash="index_cache/html/unnamed-chunk-19_07c681d2326dfe922474166f603e9509">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">repr.plot.width =</span> <span class="dv">10</span>, <span class="at">repr.plot.height =</span> <span class="dv">10</span>)</span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">3</span>))</span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(iter <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>){</span>
-<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>    i <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(train_ds), <span class="dv">1</span>)</span>
-<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>    x <span class="ot">&lt;-</span> train_ds<span class="sc">$</span>data[i, ,] <span class="sc">%&gt;%</span> t</span>
-<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">image</span>(x[<span class="dv">1</span><span class="sc">:</span><span class="dv">28</span>, <span class="dv">28</span><span class="sc">:</span><span class="dv">1</span>], <span class="at">useRaster =</span> <span class="cn">TRUE</span>, <span class="at">axes =</span> <span class="cn">FALSE</span>, <span class="at">col =</span> <span class="fu">gray.colors</span>(<span class="dv">1000</span>), <span class="at">main =</span> train_ds<span class="sc">$</span>targets[i]<span class="sc">-</span><span class="dv">1</span>)</span>
-<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-tags="[]" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-hash="index_cache/html/fig.width- 10, fig.height- 10_ad07edc534d75498c4100753841508ab">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">3</span>))</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(iter <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>){</span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>    i <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(train_ds), <span class="dv">1</span>)</span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>    x <span class="ot">&lt;-</span> train_ds<span class="sc">$</span>data[i, ,] <span class="sc">%&gt;%</span> t</span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">image</span>(x[<span class="dv">1</span><span class="sc">:</span><span class="dv">28</span>, <span class="dv">28</span><span class="sc">:</span><span class="dv">1</span>], <span class="at">useRaster =</span> <span class="cn">TRUE</span>, <span class="at">axes =</span> <span class="cn">FALSE</span>, <span class="at">col =</span> <span class="fu">gray.colors</span>(<span class="dv">1000</span>), <span class="at">main =</span> train_ds<span class="sc">$</span>targets[i]<span class="sc">-</span><span class="dv">1</span>)</span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid" width="672"></p>
+<p><img src="index_files/figure-html/fig.width-%2010,%20fig.height-%2010-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p><br><br><br><br> <br><br><br><br></p>
@@ -696,11 +694,11 @@ glm_preds   0   1
 </section>
 <section id="image-classification" class="level1">
 <h1>Image Classification</h1>
-<div class="cell" data-tags="[]" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-hash="index_cache/html/unnamed-chunk-20_9a2dd2c664622ec2602bfd23d9476fb7">
+<div class="cell" data-tags="[]" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-hash="index_cache/html/unnamed-chunk-18_c7737b3ac7940686f14047322961f049">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>train_dl <span class="ot">&lt;-</span> <span class="fu">dataloader</span>(train_ds, <span class="at">batch_size =</span> <span class="dv">1024</span>, <span class="at">shuffle =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>test_dl <span class="ot">&lt;-</span> <span class="fu">dataloader</span>(test_ds, <span class="at">batch_size =</span> <span class="dv">1024</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-tags="[]" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-hash="index_cache/html/unnamed-chunk-21_69b193ee0256823c748c11190f552c6e">
+<div class="cell" data-tags="[]" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-hash="index_cache/html/unnamed-chunk-19_37c15a45bd969719daea06b105fcadf2">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>NNet_10 <span class="ot">&lt;-</span> <span class="fu">nn_module</span>(</span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">initialize =</span> <span class="cf">function</span>(p, q1, q2, q3, o) {</span>
 <span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>    self<span class="sc">$</span>hidden1 <span class="ot">&lt;-</span> <span class="fu">nn_linear</span>(p, q1)</span>
@@ -721,7 +719,7 @@ glm_preds   0   1
 <span id="cb38-18"><a href="#cb38-18" aria-hidden="true" tabindex="-1"></a>  }</span>
 <span id="cb38-19"><a href="#cb38-19" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-tags="[]" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-hash="index_cache/html/unnamed-chunk-22_55b17c3fb02161309b421c25e266493d">
+<div class="cell" data-tags="[]" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-hash="index_cache/html/unnamed-chunk-20_72f48a5b6fffad08be25f4c0d76c6b31">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>fit_nn <span class="ot">&lt;-</span> NNet_10 <span class="sc">%&gt;%</span></span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">#</span></span>
 <span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Setup the model</span></span>
@@ -748,28 +746,28 @@ glm_preds   0   1
 <span id="cb39-24"><a href="#cb39-24" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Epoch 1/10
-Train metrics: Loss: 0.9985 - Acc: 0.7022
+Train metrics: Loss: 1.0174 - Acc: 0.7149
 Epoch 2/10
-Train metrics: Loss: 0.3034 - Acc: 0.912
+Train metrics: Loss: 0.3109 - Acc: 0.9107
 Epoch 3/10
-Train metrics: Loss: 0.2265 - Acc: 0.9341
+Train metrics: Loss: 0.2379 - Acc: 0.9317
 Epoch 4/10
-Train metrics: Loss: 0.1757 - Acc: 0.9488
+Train metrics: Loss: 0.1897 - Acc: 0.9452
 Epoch 5/10
-Train metrics: Loss: 0.143 - Acc: 0.958
+Train metrics: Loss: 0.161 - Acc: 0.953
 Epoch 6/10
-Train metrics: Loss: 0.1234 - Acc: 0.963
+Train metrics: Loss: 0.1378 - Acc: 0.9588
 Epoch 7/10
-Train metrics: Loss: 0.1053 - Acc: 0.9686
+Train metrics: Loss: 0.1212 - Acc: 0.9648
 Epoch 8/10
-Train metrics: Loss: 0.0917 - Acc: 0.9728
+Train metrics: Loss: 0.1066 - Acc: 0.9682
 Epoch 9/10
-Train metrics: Loss: 0.0795 - Acc: 0.9764
+Train metrics: Loss: 0.094 - Acc: 0.9717
 Epoch 10/10
-Train metrics: Loss: 0.0699 - Acc: 0.979</code></pre>
+Train metrics: Loss: 0.0829 - Acc: 0.9756</code></pre>
 </div>
 </div>
-<div class="cell" data-tags="[]" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-hash="index_cache/html/unnamed-chunk-23_2524fdfdfe5a0acf8bcf0c2466f661b7">
+<div class="cell" data-tags="[]" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-hash="index_cache/html/unnamed-chunk-21_338a3e158ad043e3b7df408cd1b10479">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>NN10_preds <span class="ot">&lt;-</span> fit_nn <span class="sc">%&gt;%</span> </span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">predict</span>(test_ds) <span class="sc">%&gt;%</span> </span>
 <span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">torch_argmax</span>(<span class="at">dim =</span> <span class="dv">2</span>) <span class="sc">%&gt;%</span></span>
@@ -785,10 +783,10 @@ Accuracy
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<div class="cell" data-hash="index_cache/html/unnamed-chunk-24_4687c1552b02de62d131f14d16e1733f">
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-22_5fa824699cba4af6c56f34ca72182a5d">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(NN10_preds <span class="sc">==</span> test_ds<span class="sc">$</span>targets)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.973</code></pre>
+<pre><code>[1] 0.9684</code></pre>
 </div>
 </div>
 </div>
@@ -803,79 +801,295 @@ Confusion matrix
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<div class="cell" data-hash="index_cache/html/unnamed-chunk-25_deaa0fcf1ab1a5ed22ad0609d0e2cd64">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(NN10_preds, test_ds<span class="sc">$</span>targets)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-23_22dc5b0eef916eda9ccdf4be9890c408">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(NN10_preds <span class="sc">-</span> <span class="dv">1</span>, test_ds<span class="sc">$</span>targets <span class="sc">-</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>          
-NN10_preds    1    2    3    4    5    6    7    8    9   10
-        1   972    0    7    0    1    2    8    2    4    8
-        2     0 1116    1    0    0    0    3    6    0    2
-        3     0    4 1006    7    8    0    1   14    4    0
-        4     2    1    4  982    0    4    0    4    5   10
-        5     0    0    1    0  952    1    3    0    3    9
-        6     1    1    1    6    0  866    6    0    4    2
-        7     1    4    2    1    7    8  933    0    3    0
-        8     1    1    5    4    2    0    0  989    2    6
-        9     3    8    5   10    1    9    4    5  947    5
-        10    0    0    0    0   11    2    0    8    2  967</code></pre>
+<pre><code>   
+       0    1    2    3    4    5    6    7    8    9
+  0  964    0    7    1    1    2    7    1    4    3
+  1    0 1123    3    0    0    0    3   10    3    6
+  2    2    4  995    7    8    0    4   11    3    1
+  3    1    0    3  987    1    8    1    3   10    7
+  4    1    0    2    0  948    1    3    0    6   17
+  5    3    1    0    5    1  859    6    0   10    5
+  6    4    4    5    0    5   10  932    0    6    1
+  7    1    1    7    5    3    1    0  992    5    6
+  8    1    2    9    4    1    8    2    2  923    2
+  9    3    0    1    1   14    3    0    9    4  961</code></pre>
 </div>
 </div>
-<div class="cell" data-hash="index_cache/html/unnamed-chunk-26_932d655e8139f0c1922e9cd1a52432fd">
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-24_b56b36e3886cbd815e6cc289c2397dd8">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>caret<span class="sc">::</span><span class="fu">confusionMatrix</span>(</span>
-<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>  NN10_preds <span class="sc">%&gt;%</span> as.factor, </span>
-<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>  test_ds<span class="sc">$</span>targets <span class="sc">%&gt;%</span> as.factor</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>  (NN10_preds <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span> as.factor, </span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>  (test_ds<span class="sc">$</span>targets <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span> as.factor</span>
 <span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Confusion Matrix and Statistics
 
           Reference
-Prediction    1    2    3    4    5    6    7    8    9   10
-        1   972    0    7    0    1    2    8    2    4    8
-        2     0 1116    1    0    0    0    3    6    0    2
-        3     0    4 1006    7    8    0    1   14    4    0
-        4     2    1    4  982    0    4    0    4    5   10
-        5     0    0    1    0  952    1    3    0    3    9
-        6     1    1    1    6    0  866    6    0    4    2
-        7     1    4    2    1    7    8  933    0    3    0
-        8     1    1    5    4    2    0    0  989    2    6
-        9     3    8    5   10    1    9    4    5  947    5
-        10    0    0    0    0   11    2    0    8    2  967
+Prediction    0    1    2    3    4    5    6    7    8    9
+         0  964    0    7    1    1    2    7    1    4    3
+         1    0 1123    3    0    0    0    3   10    3    6
+         2    2    4  995    7    8    0    4   11    3    1
+         3    1    0    3  987    1    8    1    3   10    7
+         4    1    0    2    0  948    1    3    0    6   17
+         5    3    1    0    5    1  859    6    0   10    5
+         6    4    4    5    0    5   10  932    0    6    1
+         7    1    1    7    5    3    1    0  992    5    6
+         8    1    2    9    4    1    8    2    2  923    2
+         9    3    0    1    1   14    3    0    9    4  961
 
 Overall Statistics
                                           
-               Accuracy : 0.973           
-                 95% CI : (0.9696, 0.9761)
+               Accuracy : 0.9684          
+                 95% CI : (0.9648, 0.9717)
     No Information Rate : 0.1135          
     P-Value [Acc &gt; NIR] : &lt; 2.2e-16       
                                           
-                  Kappa : 0.97            
+                  Kappa : 0.9649          
                                           
  Mcnemar's Test P-Value : NA              
 
 Statistics by Class:
 
-                     Class: 1 Class: 2 Class: 3 Class: 4 Class: 5 Class: 6
-Sensitivity            0.9918   0.9833   0.9748   0.9723   0.9695   0.9709
-Specificity            0.9965   0.9986   0.9958   0.9967   0.9981   0.9977
-Pos Pred Value         0.9681   0.9894   0.9636   0.9704   0.9825   0.9763
-Neg Pred Value         0.9991   0.9979   0.9971   0.9969   0.9967   0.9971
+                     Class: 0 Class: 1 Class: 2 Class: 3 Class: 4 Class: 5
+Sensitivity            0.9837   0.9894   0.9641   0.9772   0.9654   0.9630
+Specificity            0.9971   0.9972   0.9955   0.9962   0.9967   0.9966
+Pos Pred Value         0.9737   0.9782   0.9614   0.9667   0.9693   0.9652
+Neg Pred Value         0.9982   0.9986   0.9959   0.9974   0.9962   0.9964
 Prevalence             0.0980   0.1135   0.1032   0.1010   0.0982   0.0892
-Detection Rate         0.0972   0.1116   0.1006   0.0982   0.0952   0.0866
-Detection Prevalence   0.1004   0.1128   0.1044   0.1012   0.0969   0.0887
-Balanced Accuracy      0.9941   0.9910   0.9853   0.9845   0.9838   0.9843
-                     Class: 7 Class: 8 Class: 9 Class: 10
-Sensitivity            0.9739   0.9621   0.9723    0.9584
-Specificity            0.9971   0.9977   0.9945    0.9974
-Pos Pred Value         0.9729   0.9792   0.9498    0.9768
-Neg Pred Value         0.9972   0.9957   0.9970    0.9953
-Prevalence             0.0958   0.1028   0.0974    0.1009
-Detection Rate         0.0933   0.0989   0.0947    0.0967
-Detection Prevalence   0.0959   0.1010   0.0997    0.0990
-Balanced Accuracy      0.9855   0.9799   0.9834    0.9779</code></pre>
+Detection Rate         0.0964   0.1123   0.0995   0.0987   0.0948   0.0859
+Detection Prevalence   0.0990   0.1148   0.1035   0.1021   0.0978   0.0890
+Balanced Accuracy      0.9904   0.9933   0.9798   0.9867   0.9810   0.9798
+                     Class: 6 Class: 7 Class: 8 Class: 9
+Sensitivity            0.9729   0.9650   0.9476   0.9524
+Specificity            0.9961   0.9968   0.9966   0.9961
+Pos Pred Value         0.9638   0.9716   0.9675   0.9649
+Neg Pred Value         0.9971   0.9960   0.9944   0.9947
+Prevalence             0.0958   0.1028   0.0974   0.1009
+Detection Rate         0.0932   0.0992   0.0923   0.0961
+Detection Prevalence   0.0967   0.1021   0.0954   0.0996
+Balanced Accuracy      0.9845   0.9809   0.9721   0.9743</code></pre>
 </div>
 </div>
 </div>
 </div>
+<div class="cell" data-tags="[]" data-hash="index_cache/html/unnamed-chunk-25_fa2fc63ac84373e9602e64353147d55b">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">repr.plot.width =</span> <span class="dv">10</span>, <span class="at">repr.plot.height =</span> <span class="dv">10</span>)</span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">3</span>))</span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(iter <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>){</span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>    i <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(test_ds), <span class="dv">1</span>)</span>
+<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a>    x <span class="ot">&lt;-</span> test_ds<span class="sc">$</span>data[i, ,] <span class="sc">%&gt;%</span> t</span>
+<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">image</span>(x[<span class="dv">1</span><span class="sc">:</span><span class="dv">28</span>, <span class="dv">28</span><span class="sc">:</span><span class="dv">1</span>], <span class="at">useRaster =</span> <span class="cn">TRUE</span>, <span class="at">axes =</span> <span class="cn">FALSE</span>, <span class="at">col =</span> <span class="fu">gray.colors</span>(<span class="dv">1000</span>), <span class="at">main =</span> <span class="fu">paste</span>(<span class="st">"predicted ="</span>, NN10_preds[i] <span class="sc">-</span> <span class="dv">1</span>))</span>
+<span id="cb48-8"><a href="#cb48-8" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p><br><br><br><br> <br><br><br><br> <br><br><br><br></p>
+<hr>
+</section>
+<section id="thu-apr-13" class="level1">
+<h1>Thu, Apr 13</h1>
+<section id="supervised-learning" class="level2">
+<h2 class="anchored" data-anchor-id="supervised-learning">Supervised learning</h2>
+<p>For a majority of this course we have focused on <strong>supervised learning</strong> where we have access to <strong>labelled data</strong> i.e., we are given access to the <em>covariates and the responses</em></p>
+<p><br><br><br></p>
+<p><span class="math display">\[
+\begin{aligned}
+\text{observation}\ 1: &amp;\quad (X_{1, 1}, X_{2, 1}, \dots X_{p, 1}, y_1)\\
+\text{observation}\ 2: &amp;\quad (X_{1, 2}, X_{2, 2}, \dots X_{p, 2}, y_2)\\
+\vdots\quad &amp; \quad\quad\quad\vdots\\
+\text{observation}\ n: &amp;\quad (X_{1, n}, X_{2, n}, \dots X_{p, n}, y_n)
+\end{aligned}
+\]</span></p>
+<p><br><br><br></p>
+<p>Our <strong>goal</strong> has been to:</p>
+<ul>
+<li>Predict <span class="math inline">\(y\)</span> using <span class="math inline">\(X_1, X_2, \dots X_p\)</span></li>
+<li>Understand how each <span class="math inline">\(X_i\)</span> influences the response <span class="math inline">\(y\)</span></li>
+</ul>
+</section>
+<section id="unsupervised-learning" class="level2">
+<h2 class="anchored" data-anchor-id="unsupervised-learning">Unsupervised learning</h2>
+<p>In unsupervised learning we <strong>DON’T</strong> have access to the labelled data, i.e., we are only given:</p>
+<p><br><br><br></p>
+<p><span class="math display">\[
+\begin{aligned}
+\text{observation}\ 1: &amp;\quad (X_{1, 1}, X_{2, 1}, \dots X_{p, 1})\\
+\text{observation}\ 2: &amp;\quad (X_{1, 2}, X_{2, 2}, \dots X_{p, 2})\\
+\vdots\quad &amp; \quad\quad\quad\vdots\\
+\text{observation}\ n: &amp;\quad (X_{1, n}, X_{2, n}, \dots X_{p, n})
+\end{aligned}
+\]</span></p>
+<p><br><br><br></p>
+<p>Our <strong>goal</strong> here is:</p>
+<ul>
+<li><p>To understand the relationship between <span class="math inline">\(X_1, X_2, \dots X_p\)</span></p>
+<blockquote class="blockquote">
+<ul>
+<li><strong>dimension reduction</strong>:</li>
+</ul>
+<p>Can we discover subgroups of variables <span class="math inline">\(X_1, X_2, \dots X_p\)</span> which behave similarly?</p>
+</blockquote>
+<blockquote class="blockquote">
+<ul>
+<li><strong>clustering</strong>:</li>
+</ul>
+<p>Can we discover subgroups of observations <span class="math inline">\(1, 2, \dots n\)</span> which are similar?</p>
+</blockquote></li>
+</ul>
+<p><br><br><br></p>
+<section id="why-unsupervised-learning" class="level4">
+<h4 class="anchored" data-anchor-id="why-unsupervised-learning">Why unsupervised learning?</h4>
+<p>It is always easier to obtain unlabeled data as oppposed to labeled data (which require someone or something to actually assign the proper responses <span class="math inline">\(y_1, y_2, \dots y_n\)</span>)</p>
+<p>In statistics and data science, there are a multitude of different methods which have been proposed to tackle each of the two problems. They include:</p>
+<ul>
+<li><strong>Dimension reduction</strong>:
+<ul>
+<li>Principal component analysis</li>
+<li>Uniform Manifold Approximation (UMAP)</li>
+<li>t-Stochastic Neighbor embedding (t-SNE)</li>
+<li>…</li>
+</ul></li>
+<li><strong>Clustering</strong>:
+<ul>
+<li>k-means clustering</li>
+<li>Hierarchical clustering</li>
+<li>Topological clustering</li>
+<li>Laplacian eigenmaps</li>
+<li>…</li>
+</ul></li>
+</ul>
+<p>This is one of the most exciting parts of data-science</p>
+<hr>
+</section>
+</section>
+<section id="principal-component-analysis-pca" class="level2">
+<h2 class="anchored" data-anchor-id="principal-component-analysis-pca">Principal Component Analysis (PCA)</h2>
+<p>Given variables <span class="math inline">\((X_1, X_2, \dots X_p)\)</span>, PCA produces a low-dimensional representation of the dataset, i.e.,</p>
+<p><br><br></p>
+<p><span class="math display">\[
+\begin{aligned}
+\text{observation}\ 1: &amp;\quad (X_{1, 1}, X_{2, 1}, \dots X_{p, 1}) \longrightarrow (Z_{1, 1}, Z_{2, 1})\\
+\text{observation}\ 2: &amp;\quad (X_{1, 2}, X_{2, 2}, \dots X_{p, 2}) \longrightarrow (Z_{1, 2}, Z_{2, 2})\\
+\vdots\quad &amp; \quad\quad\quad\vdots\\
+\text{observation}\ n: &amp;\quad (X_{1, n}, X_{2, n}, \dots X_{p, n}) \longrightarrow (Z_{1, n}, Z_{2, n})
+\end{aligned}
+\]</span></p>
+<p><br><br></p>
+<p>It tries to create variables <span class="math inline">\((Z_1, Z_2, \dots Z_q)\)</span> for <span class="math inline">\(q &lt; p\)</span> such that:</p>
+<ol type="1">
+<li><span class="math inline">\(q \ll p\)</span></li>
+<li><span class="math inline">\((Z_1, Z_2, \dots Z_q)\)</span> contains <em>roughly</em> the same information as <span class="math inline">\((X_1, X_2, \dots X_p)\)</span></li>
+</ol>
+<p><br><br> <br><br></p>
+<hr>
+<section id="how-does-pca-achieve-this" class="level4">
+<h4 class="anchored" data-anchor-id="how-does-pca-achieve-this">How does PCA achieve this?</h4>
+<p><br><br></p>
+<p>The <code>Julia</code> notebook <a href="jl/pca.html">here</a> illustrates this process in <span class="math inline">\(2d\)</span> and <span class="math inline">\(3d\)</span>.</p>
+<section id="step-1" class="level5">
+<h5 class="anchored">Step 1:</h5>
+<p>The <strong>first principal component</strong> <span class="math inline">\(Z_1\)</span> is the <em>normalized</em> linear combination of the features:</p>
+<p><br><br></p>
+<p><span class="math display">\[
+Z_1 = v_{11} X_1 + v_{21} X_2 + \dots v_{p1} X_p
+\]</span></p>
+<p><br><br></p>
+<p>such that:</p>
+<ul>
+<li><span class="math inline">\(Z_1\)</span> has the largest possible variance</li>
+<li><span class="math inline">\(\sum_{i=1}^p v^2_{p, i} = 1\)</span></li>
+</ul>
+<p><br><br></p>
+<blockquote class="blockquote">
+<h4 id="note" class="anchored" data-anchor-id="step-1">Note:</h4>
+<p><span class="math inline">\(V_1 = (v_{11}, v_{21}, \dots v_{p1})\)</span> are called the <strong>factor loadings</strong> of the first principal component.</p>
+</blockquote>
+<p><br><br></p>
+<hr>
+<p><br><br></p>
+</section>
+<section id="step-2" class="level5">
+<h5 class="anchored" data-anchor-id="step-2">Step 2:</h5>
+<p>The <strong>second principal component</strong> <span class="math inline">\(Z_2\)</span> is the <em>normalized</em> linear combination of the features:</p>
+<p><br><br></p>
+<p><span class="math display">\[
+Z_2 = v_{12} X_1 + v_{22} X_2 + \dots v_{p2} X_p
+\]</span></p>
+<p><br><br></p>
+<p>such that:</p>
+<ul>
+<li><span class="math inline">\(V_2 \perp V_1\)</span></li>
+<li><span class="math inline">\(Z_2\)</span> has the largest possible variance</li>
+<li><span class="math inline">\(\sum_{i=1}^p v^2_{p, 2} = 1\)</span></li>
+</ul>
+<p><br><br></p>
+<hr>
+<p><span class="math display">\[
+\begin{aligned}
+\vdots
+\\
+\vdots
+\end{aligned}
+\]</span></p>
+<hr>
+</section>
+<section id="step-q" class="level5">
+<h5 class="anchored" data-anchor-id="step-q">Step q:</h5>
+<p>The <strong><span class="math inline">\(q\)</span>th principal component</strong> <span class="math inline">\(Z_q\)</span> is the <em>normalized</em> linear combination of the features:</p>
+<p><br><br></p>
+<p><span class="math display">\[
+Z_2 = v_{12} X_1 + v_{22} X_2 + \dots v_{p2} X_p
+\]</span></p>
+<p><br><br></p>
+<p>such that:</p>
+<ul>
+<li><span class="math inline">\(Z_q\)</span> has the largest possible variance</li>
+<li><span class="math inline">\(V_q \perp \text{span}(V_1, V_2, \dots, V_{q-1})\)</span></li>
+<li><span class="math inline">\(\sum_{i=1}^p v^2_{p, 2} = 1\)</span></li>
+</ul>
+<p><br><br></p>
+<p><br><br></p>
+</section>
+</section>
+</section>
+<section id="example-in-r" class="level2">
+<h2 class="anchored" data-anchor-id="example-in-r">Example in <code>R</code></h2>
+<p>In R, we can use the built-in function prcomp() to perform PCA.</p>
+<div class="cell" data-tags="[]" data-hash="index_cache/html/unnamed-chunk-26_ee95fe47b7780daa3d77d11ef65561b6">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">x1 =</span> <span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>),</span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">x2 =</span> x1 <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="fl">0.1</span>)</span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-tags="[]" data-hash="index_cache/html/unnamed-chunk-27_8cfb85c475b890b865f982f4f8f30993">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>pca <span class="ot">&lt;-</span> <span class="fu">princomp</span>(data, <span class="at">cor =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(pca)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Importance of components:
+                          Comp.1      Comp.2
+Standard deviation     1.4123136 0.073282039
+Proportion of Variance 0.9973149 0.002685129
+Cumulative Proportion  0.9973149 1.000000000</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>pca<span class="sc">$</span>loadings</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Loadings:
+   Comp.1 Comp.2
+x1  0.707  0.707
+x2  0.707 -0.707
+
+               Comp.1 Comp.2
+SS loadings       1.0    1.0
+Proportion Var    0.5    0.5
+Cumulative Var    0.5    1.0</code></pre>
+</div>
+</div>
+</section>
 </section>
 
 </main>

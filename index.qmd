@@ -5,8 +5,11 @@ title-block-style: default
 execute:
   freeze: true
   cache: true
-format: html
-# format: pdf
+format:
+  html: # comment this line to get pdf
+  # pdf: 
+    fig-width: 7
+    fig-height: 7
 ---
 
 ```{r}
@@ -301,10 +304,9 @@ length(train_ds)
 train_ds$data[42000, ,]
 ```
 
-```{r}
+```{r, fig.width: 7, fig.height: 7}
 #| tags: []
 #| vscode: {languageId: r}
-options(repr.plot.width=10, repr.plot.height=10)
 
 i <- sample(1:length(train_ds), 1)
 x <- train_ds$data[i, ,] %>% t
@@ -312,10 +314,9 @@ x <- train_ds$data[i, ,] %>% t
 image(x[1:28, 28:1], useRaster=TRUE, axes=FALSE, col=gray.colors(1000), main = train_ds$targets[i]-1 )
 ```
 
-```{r}
+```{r, fig.width: 10, fig.height: 10}
 #| tags: []
 #| vscode: {languageId: r}
-options(repr.plot.width = 10, repr.plot.height = 10)
 par(mfrow=c(3,3))
 
 for(iter in 1:9){
@@ -414,14 +415,252 @@ mean(NN10_preds == test_ds$targets)
 ## Confusion matrix
 
 ```{r}
-table(NN10_preds, test_ds$targets)
+table(NN10_preds - 1, test_ds$targets - 1)
 ```
 
 
 ```{r}
 caret::confusionMatrix(
-  NN10_preds %>% as.factor, 
-  test_ds$targets %>% as.factor
+  (NN10_preds - 1) %>% as.factor, 
+  (test_ds$targets - 1) %>% as.factor
 )
 ```
 :::
+
+```{r}
+#| tags: []
+options(repr.plot.width = 10, repr.plot.height = 10)
+par(mfrow=c(3,3))
+
+for(iter in 1:9){
+    i <- sample(1:length(test_ds), 1)
+    x <- test_ds$data[i, ,] %>% t
+    image(x[1:28, 28:1], useRaster = TRUE, axes = FALSE, col = gray.colors(1000), main = paste("predicted =", NN10_preds[i] - 1))
+}
+```
+
+<br><br><br><br>
+<br><br><br><br>
+<br><br><br><br>
+
+---
+
+# Thu, Apr 13
+
+
+## Supervised learning
+
+For a majority of this course we have focused on **supervised learning** where we have access to **labelled data** i.e., we are given access to the _covariates and the responses_
+
+<br><br><br>
+
+$$
+\begin{aligned}
+\text{observation}\ 1: &\quad (X_{1, 1}, X_{2, 1}, \dots X_{p, 1}, y_1)\\
+\text{observation}\ 2: &\quad (X_{1, 2}, X_{2, 2}, \dots X_{p, 2}, y_2)\\
+\vdots\quad & \quad\quad\quad\vdots\\ 
+\text{observation}\ n: &\quad (X_{1, n}, X_{2, n}, \dots X_{p, n}, y_n)
+\end{aligned}
+$$
+
+<br><br><br>
+
+Our **goal** has been to:
+
+* Predict $y$ using $X_1, X_2, \dots X_p$
+* Understand how each $X_i$ influences the response $y$
+
+## Unsupervised learning
+
+In unsupervised learning we **DON'T** have access to the labelled data, i.e., we are only given:
+
+<br><br><br>
+
+$$
+\begin{aligned}
+\text{observation}\ 1: &\quad (X_{1, 1}, X_{2, 1}, \dots X_{p, 1})\\
+\text{observation}\ 2: &\quad (X_{1, 2}, X_{2, 2}, \dots X_{p, 2})\\
+\vdots\quad & \quad\quad\quad\vdots\\ 
+\text{observation}\ n: &\quad (X_{1, n}, X_{2, n}, \dots X_{p, n})
+\end{aligned}
+$$
+
+<br><br><br>
+
+Our **goal** here is:
+
+* To understand the relationship between $X_1, X_2, \dots X_p$
+
+    > * **dimension reduction**: 
+    > 
+    > Can we discover subgroups of variables $X_1, X_2, \dots X_p$ which behave similarly?
+    
+    > * **clustering**:
+    >
+    > Can we discover subgroups of observations $1, 2, \dots n$ which are similar?
+    
+<br><br><br>
+
+#### Why unsupervised learning?
+
+It is always easier to obtain unlabeled data as oppposed to labeled data (which require someone or something to actually assign the proper responses $y_1, y_2, \dots y_n$)
+
+In statistics and data science, there are a multitude of different methods which have been proposed to tackle each of the two problems. They include:
+
+* **Dimension reduction**:
+    * Principal component analysis
+    * Uniform Manifold Approximation (UMAP)
+    * t-Stochastic Neighbor embedding (t-SNE)
+    * ...
+    
+* **Clustering**:
+    * k-means clustering
+    * Hierarchical clustering
+    * Topological clustering
+    * Laplacian eigenmaps
+    * ...
+    
+This is one of the most exciting parts of data-science
+
+---
+
+
+## Principal Component Analysis (PCA)
+
+Given variables $(X_1, X_2, \dots X_p)$, PCA produces a low-dimensional representation of the dataset, i.e., 
+
+<br><br>
+
+$$
+\begin{aligned}
+\text{observation}\ 1: &\quad (X_{1, 1}, X_{2, 1}, \dots X_{p, 1}) \longrightarrow (Z_{1, 1}, Z_{2, 1})\\
+\text{observation}\ 2: &\quad (X_{1, 2}, X_{2, 2}, \dots X_{p, 2}) \longrightarrow (Z_{1, 2}, Z_{2, 2})\\
+\vdots\quad & \quad\quad\quad\vdots\\ 
+\text{observation}\ n: &\quad (X_{1, n}, X_{2, n}, \dots X_{p, n}) \longrightarrow (Z_{1, n}, Z_{2, n})
+\end{aligned}
+$$
+
+<br><br>
+
+It tries to create variables $(Z_1, Z_2, \dots Z_q)$ for $q < p$ such that:
+
+1. $q \ll p$
+1. $(Z_1, Z_2, \dots Z_q)$ contains _roughly_ the same information as $(X_1, X_2, \dots X_p)$
+
+
+<br><br>
+<br><br>
+
+---
+
+#### How does PCA achieve this?
+
+<br><br>
+
+The `Julia` notebook [here](jl/pca.html) illustrates this process in $2d$ and $3d$.
+
+
+##### Step 1:
+
+The **first principal component** $Z_1$ is the _normalized_ linear combination of the features:
+
+<br><br>
+
+$$
+Z_1 = v_{11} X_1 + v_{21} X_2 + \dots v_{p1} X_p
+$$
+
+<br><br>
+
+such that: 
+
+* $Z_1$ has the largest possible variance
+* $\sum_{i=1}^p v^2_{p, i} = 1$
+
+<br><br>
+
+
+> #### Note:
+> $V_1 = (v_{11}, v_{21}, \dots v_{p1})$ are called the **factor loadings** of the first principal component.
+
+<br><br>
+
+---
+
+<br><br>
+
+
+##### Step 2:
+
+The **second principal component** $Z_2$ is the _normalized_ linear combination of the features:
+
+<br><br>
+
+$$
+Z_2 = v_{12} X_1 + v_{22} X_2 + \dots v_{p2} X_p
+$$
+
+<br><br>
+
+such that: 
+
+* $V_2 \perp V_1$
+* $Z_2$ has the largest possible variance
+* $\sum_{i=1}^p v^2_{p, 2} = 1$
+
+<br><br>
+
+---
+
+$$
+\begin{aligned}
+\vdots
+\\
+\vdots
+\end{aligned}
+$$
+
+---
+
+##### Step q:
+
+The **$q$th principal component** $Z_q$ is the _normalized_ linear combination of the features:
+
+<br><br>
+
+$$
+Z_2 = v_{12} X_1 + v_{22} X_2 + \dots v_{p2} X_p
+$$
+
+<br><br>
+
+such that: 
+
+* $Z_q$ has the largest possible variance
+* $V_q \perp \text{span}(V_1, V_2, \dots, V_{q-1})$
+* $\sum_{i=1}^p v^2_{p, 2} = 1$
+
+<br><br>
+
+
+
+<br><br>
+
+## Example in `R`
+
+In R, we can use the built-in function prcomp() to perform PCA.
+
+```{r}
+#| tags: []
+data <- tibble(
+  x1 = rnorm(100, mean = 0, sd = 1),
+  x2 = x1 + rnorm(100, mean = 0, sd = 0.1)
+)
+```
+
+```{r}
+#| tags: []
+pca <- princomp(data, cor = TRUE)
+summary(pca)
+pca$loadings
+```
