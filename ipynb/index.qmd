@@ -1,16 +1,17 @@
 ---
-title: "Week 12"
+jupyter: ir42
+---
+
+<!-- ---
+title: "Week 6"
 title-block-banner: true
 title-block-style: default
 execute:
   freeze: true
   cache: true
-format:
-  html: # comment this line to get pdf
-  # pdf: 
-    fig-width: 7
-    fig-height: 7
----
+format: html
+# format: pdf
+--- -->
 
 ```{r}
 #| tags: []
@@ -22,7 +23,7 @@ dir <- "~/work/courses/stat380/weeks/week-12/"
 
 #### Packages we will require this week
 
-```{r warnings=F, message=F, results='hide'}
+```{r}
 #| tags: []
 #| vscode: {languageId: r}
 packages <- c(
@@ -48,7 +49,7 @@ packages <- c(
 )
 
 # renv::install(packages)
-sapply(packages, require, character.only = TRUE)
+sapply(packages, require, character.only=TRUE)
 ```
 
 ---
@@ -188,7 +189,7 @@ fit_nn <- NNet %>%
     #
     setup(
         loss = nn_bce_loss(),
-        optimizer = optim_adam, 
+        optimizer = optim_adagrad, 
         metrics = list(
             luz_metric_accuracy()
         )
@@ -197,7 +198,7 @@ fit_nn <- NNet %>%
     # Set the hyperparameters
     #
     set_hparams(p=ncol(M), q1=256, q2=128, q3=64) %>% 
-    set_opt_hparams(lr=0.005) %>% 
+    set_opt_hparams(lr=1e-2) %>% 
     #
     # Fit the model
     #
@@ -236,6 +237,7 @@ mean(nn_preds == df_test$y)
 ```
 
 ```{r}
+#| tags: []
 #| vscode: {languageId: r}
 table(glm_preds, df_test$y)
 mean(glm_preds == df_test$y)
@@ -288,16 +290,16 @@ transform <- function(x) x %>%
 dir <- "./mnist"
 
 train_ds <- mnist_dataset(
-    root = dir,
-    train = TRUE,
-    download = TRUE,
-    transform = transform
+  dir,
+  download = TRUE,
+  transform = transform
 )
+
 test_ds <- mnist_dataset(
-    root = dir,
-    train = FALSE,
-    download = TRUE,
-    transform = transform
+  dir,
+  download = TRUE,
+  train = FALSE,
+  transform = transform
 )
 ```
 
@@ -309,9 +311,10 @@ length(train_ds)
 train_ds$data[42000, ,]
 ```
 
-```{r, fig.width: 7, fig.height: 7}
+```{r}
 #| tags: []
 #| vscode: {languageId: r}
+options(repr.plot.width=10, repr.plot.height=10)
 
 i <- sample(1:length(train_ds), 1)
 x <- train_ds$data[i, ,] %>% t
@@ -319,9 +322,10 @@ x <- train_ds$data[i, ,] %>% t
 image(x[1:28, 28:1], useRaster=TRUE, axes=FALSE, col=gray.colors(1000), main = train_ds$targets[i]-1 )
 ```
 
-```{r, fig.width: 10, fig.height: 10}
+```{r}
 #| tags: []
 #| vscode: {languageId: r}
+options(repr.plot.width = 10, repr.plot.height = 10)
 par(mfrow=c(3,3))
 
 for(iter in 1:9){
@@ -341,8 +345,8 @@ for(iter in 1:9){
 ```{r}
 #| tags: []
 #| vscode: {languageId: r}
-train_dl <- dataloader(train_ds, batch_size = 1024, shuffle = TRUE)
-test_dl <- dataloader(test_ds, batch_size = 1024)
+train_dl <- dataloader(train_ds, batch_size = 2000, shuffle = TRUE)
+test_dl <- dataloader(test_ds, batch_size = 2000)
 ```
 
 ```{r}
@@ -391,6 +395,9 @@ fit_nn <- NNet_10 %>%
     # Fit the model
     #
     fit(
+        #
+        # Training Data
+        #
         epochs = 10,
         data = train_dl,
         # valid_data = test_dl,
@@ -407,30 +414,19 @@ NN10_preds <- fit_nn %>%
   as_array()
 ```
 
-
-::: {.callout-tip}
-#### Accuracy
-
 ```{r}
-mean(NN10_preds == test_ds$targets)
-```
-:::
-
-::: {.callout-tip}
-## Confusion matrix
-
-```{r}
-table(NN10_preds - 1, test_ds$targets - 1)
+#| tags: []
+NN10_preds <- NN10_preds -1 
 ```
 
-
 ```{r}
-caret::confusionMatrix(
-  (NN10_preds - 1) %>% as.factor, 
-  (test_ds$targets - 1) %>% as.factor
+#| tags: []
+#| vscode: {languageId: r}
+table(
+    NN10_preds %>% as.factor(),
+    (test_ds$targets-1) %>% as.factor()
 )
 ```
-:::
 
 ```{r}
 #| tags: []
@@ -440,7 +436,7 @@ par(mfrow=c(3,3))
 for(iter in 1:9){
     i <- sample(1:length(test_ds), 1)
     x <- test_ds$data[i, ,] %>% t
-    image(x[1:28, 28:1], useRaster = TRUE, axes = FALSE, col = gray.colors(1000), main = paste("predicted =", NN10_preds[i] - 1))
+    image(x[1:28, 28:1], useRaster = TRUE, axes = FALSE, col = gray.colors(1000), main = paste("predicted =", NN10_preds[i]))
 }
 ```
 
@@ -493,9 +489,7 @@ $$
 <br><br><br>
 
 Our **goal** here is:
-
 * To understand the relationship between $X_1, X_2, \dots X_p$
-
     > * **dimension reduction**: 
     > 
     > Can we discover subgroups of variables $X_1, X_2, \dots X_p$ which behave similarly?
@@ -552,17 +546,12 @@ It tries to create variables $(Z_1, Z_2, \dots Z_q)$ for $q < p$ such that:
 1. $q \ll p$
 1. $(Z_1, Z_2, \dots Z_q)$ contains _roughly_ the same information as $(X_1, X_2, \dots X_p)$
 
+#### How does PCA achieve this?
 
-<br><br>
-<br><br>
 
 ---
 
-#### How does PCA achieve this?
-
 <br><br>
-
-The `Julia` notebook [here](jl/pca.html) illustrates this process in $2d$ and $3d$.
 
 
 ##### Step 1:
@@ -578,7 +567,6 @@ $$
 <br><br>
 
 such that: 
-
 * $Z_1$ has the largest possible variance
 * $\sum_{i=1}^p v^2_{p, i} = 1$
 
@@ -586,7 +574,7 @@ such that:
 
 
 > #### Note:
-> $V_1 = (v_{11}, v_{21}, \dots v_{p1})$ are called the **factor loadings** of the first principal component.
+> $V_1 = (v_{11}, v_{21}, \dots v_{p1})$ are called the **factor loadings**
 
 <br><br>
 
@@ -608,7 +596,6 @@ $$
 <br><br>
 
 such that: 
-
 * $V_2 \perp V_1$
 * $Z_2$ has the largest possible variance
 * $\sum_{i=1}^p v^2_{p, 2} = 1$
@@ -617,13 +604,7 @@ such that:
 
 ---
 
-$$
-\begin{aligned}
-\vdots
-\\
-\vdots
-\end{aligned}
-$$
+$\vdots\\\vdots$
 
 ---
 
@@ -640,7 +621,6 @@ $$
 <br><br>
 
 such that: 
-
 * $Z_q$ has the largest possible variance
 * $V_q \perp \text{span}(V_1, V_2, \dots, V_{q-1})$
 * $\sum_{i=1}^p v^2_{p, 2} = 1$
@@ -651,54 +631,56 @@ such that:
 
 <br><br>
 
----
-
-# Tue, Apr 18
-
 ## Example in `R`
 
 In R, we can use the built-in function prcomp() to perform PCA.
 
-
 ```{r}
+#| tags: []
 data <- tibble(
   x1 = rnorm(100, mean = 0, sd = 1),
   x2 = x1 + rnorm(100, mean = 0, sd = 0.1),
   x3 = x1 + rnorm(100, mean = 0, sd = 0.1)
 )
 
-head(data) %>% knitr::kable()
+head(data)
 ```
 
 ```{r}
+#| tags: []
 pca <- princomp(data, cor = TRUE)
 summary(pca)
 ```
 
 ```{r}
+#| tags: []
 screeplot(pca, type="l")
 ```
 
 ```{r}
+#| tags: []
+options(repr.plot.width=10, repr.plot.height=5)
 par(mfrow=c(1, 2))
 
-Z_pca <- predict(pca, data)
+Z_pca <- predict(pca, data[, 1:2])
 plot(data)
 plot(Z_pca)
 ```
 
 ```{r}
+#| tags: []
 pca$loadings
 ```
 
-
 ---
+
 
 
 ### Interpretation of principal components
 
 
 ```{r}
+#| tags: []
 set.seed(42)
 
 n <- 500
@@ -716,64 +698,73 @@ df <- tibble(
 ```
 
 ```{r}
-df %>%
-    head() %>%
-    round(digits = 2) %>%
-    knitr::kable()
+#| tags: []
+head(df)
 ```
 
 ```{r}
+#| tags: []
+options(repr.plot.width=7, repr.plot.height=7)
 plot(df$math, df$physics)
 ```
 
 ```{r}
+#| tags: []
 pca <- princomp(df, cor=TRUE)
 summary(pca)
 ```
 
 ```{r}
+#| tags: []
 pca$loadings
 ```
 
 ```{r}
+#| tags: []
 plot(pca, type="l")
 ```
-
 
 ---
 
 #### Principal component regression
 
 ```{r}
+#| tags: []
 df$gpa <- (0.9 * science + 0.5 * humanities + rnorm(n, mean=0, sd=10)) * 4 / 100
-
-df %>% 
-    head() %>%
-    round(digits=2) %>%
-    knitr::kable()
 ```
 
 ```{r}
+#| tags: []
+head(df)
+```
+
+```{r}
+#| tags: []
 lm_fit <- lm(gpa ~ ., df)
 summary(lm_fit)
 ```
 
 ```{r}
+#| tags: []
 vif(lm_fit) %>% t
 ```
 
 ```{r}
+#| tags: []
 df %>% 
+    # select(-gpa) %>% 
     cor() %>% 
     corrplot(diag=F)
 ```
 
 ```{r}
+#| tags: []
 pca <- princomp(df %>% select(-gpa), cor=TRUE)
 screeplot(pca)
 ```
 
 ```{r}
+#| tags: []
 Z <- predict(pca, df)
 
 df_pca <- Z %>% 
@@ -781,20 +772,210 @@ df_pca <- Z %>%
     select(Comp.1, Comp.2) %>% 
     mutate(gpa = df$gpa)
 
-head(df_pca) %>% knitr::kable()
+head(df_pca)
 ```
 
+
 ```{r}
+#| tags: []
 df_pca %>% 
     cor() %>% 
     corrplot(diag=F)
 ```
-    
+
 ```{r}
+#| tags: []
 lm_pca <- lm(gpa ~ ., df_pca)
 summary(lm_pca)
 ```
 
 ```{r}
+#| tags: []
 vif(lm_pca) %>% t
 ```
+
+----
+
+# Nonlinear dimension reduction
+
+```{r}
+#| tags: []
+generate_two_spirals <- function(){
+  set.seed(42)
+  n <- 500
+  noise <- 0.05
+  t <- (1:n) / n * 4 * pi
+  x1 <- t * (sin(t) + rnorm(n, 0, noise))
+  x2 <- t * (cos(t) + rnorm(n, 0, noise))
+  y  <- t
+  return(tibble(x1=x1, x2=x2, y=y))
+}
+```
+
+```{r}
+#| tags: []
+df <- generate_two_spirals()
+head(df)
+```
+
+```{r}
+#| tags: []
+ggplot(df) +
+    geom_point(aes(x=x1, y=x2, col=y)) +
+    scale_colour_gradient(low="red", high="blue")
+```
+
+```{r}
+#| tags: []
+pca <- princomp(df[, 1:2], cor=T)
+```
+
+```{r}
+#| tags: []
+pca$loadings
+```
+
+```{r}
+#| tags: []
+df_pca <- predict(pca, df)
+
+ggplot(as_tibble(df_pca)) +
+    geom_point(aes(x=Comp.1, y=0, col=df$y)) +
+    scale_colour_gradient(low="red", high="blue")
+```
+
+```{r}
+#| tags: []
+library(RDRToolbox)
+```
+
+```{r}
+#| tags: []
+isomap <- Isomap(df[, 1:2] %>% as.matrix, dims=1)
+```
+
+```{r}
+#| tags: []
+ggplot(as_tibble(isomap)) +
+    geom_point(aes(x=dim1, y=0, col=df$y)) +
+    scale_colour_gradient(low="red", high="blue")
+```
+
+---
+
+# Autoencoder
+
+
+![Autoencoder](https://miro.medium.com/v2/resize:fit:4800/format:webp/1*ydTBLRhllAgnqXUO5CSonQ.png)
+
+
+[image source](https://miro.medium.com/v2/resize:fit:4800/format:webp/1*ydTBLRhllAgnqXUO5CSonQ.png)
+
+```{r}
+#| tags: []
+autoencoder <- nn_module(
+    initialize = function(p, q1, q2, q3, q4, o) {
+    self$encoder <- nn_sequential(
+        nn_linear(p, q1), nn_relu(),
+        nn_linear(q1, q2), nn_relu(),
+        nn_linear(q2, q3), nn_relu(),
+        nn_linear(q3, q4), nn_relu(),
+        nn_linear(q4, o)
+    )
+    self$decoder <- nn_sequential(
+        nn_linear(o, q4), nn_relu(),
+        nn_linear(q4, q3), nn_relu(),
+        nn_linear(q3, q2), nn_relu(),
+        nn_linear(q2, q1), nn_relu(),
+        nn_linear(q1, p)
+    )
+    },
+    forward = function(x) {
+    x %>%
+        torch_reshape(c(-1, 28 * 28)) %>% 
+        self$encoder() %>%
+        self$decoder() %>% 
+        torch_reshape(c(-1, 28, 28))
+    },
+    predict = function(x) {
+    x %>% 
+        torch_reshape(c(-1, 28 * 28)) %>% 
+        self$encoder()     
+    }
+)
+```
+
+```{r}
+#| tags: []
+X <- test_ds
+inputs <- torch_tensor(X$data * 1.0)
+AE <- autoencoder(p=28*28, q1=32, q2=16, q3=8, q4=4, o=2)
+```
+
+```{r}
+#| tags: []
+plot_image = \(x) image(t(x)[1:28, 28:1], useRaster=TRUE, axes=FALSE, col=gray.colors(1000))
+```
+
+```{r}
+#| tags: []
+i <- sample(1:10000, 1)
+
+input <- inputs[i]
+output <- AE(inputs[i:i])[1]
+
+par(mfrow=c(1, 2))
+plot_image(inputs[i] %>% as_array)
+plot_image(output %>% as_array)
+```
+
+```{r}
+#| tags: []
+ae_fit <- autoencoder %>%
+    setup(
+        loss = nn_mse_loss(),
+        optimizer = optim_adam
+    ) %>%
+
+    set_hparams(
+        p=28*28, q1=2048, q2=1024, q3=512, q4=256, o=2
+    ) %>%
+    
+    set_opt_hparams(
+        lr=1e-3
+    ) %>% 
+
+    fit(
+        data = list(inputs, inputs),
+        epochs=20,
+        verbose=TRUE,
+        dataloader_options = list(batch_size = 1000, shuffle=TRUE)
+    )
+```
+
+```{r}
+#| tags: []
+plot(ae_fit)
+```
+
+```{r}
+#| tags: []
+X_dim2 <- predict(ae_fit, inputs) %>% as_array()
+head(X_dim2)
+```
+
+```{r}
+#| tags: []
+df_ae <- tibble(
+    x1 = X_dim2[, 1],
+    x2 = X_dim2[, 2],
+    y = as.factor(X$targets - 1)
+)
+```
+
+```{r}
+#| tags: []
+ggplot(df_ae) +
+    geom_point(aes(x=x1, y=x2, col=y))
+```
+

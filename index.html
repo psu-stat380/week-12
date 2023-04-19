@@ -132,7 +132,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <section id="packages-we-will-require-this-week" class="level4">
 <h4 class="anchored" data-anchor-id="packages-we-will-require-this-week">Packages we will require this week</h4>
-<div class="cell" data-warnings="false" data-tags="[]" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-hash="index_cache/html/unnamed-chunk-2_ef5e7cf08715fbe3c87192f996d2ccd5">
+<div class="cell" data-warnings="false" data-tags="[]" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-hash="index_cache/html/unnamed-chunk-2_cd6700ea874404768951a3295a83df08">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>packages <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Old packages</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"ISLR2"</span>,</span>
@@ -144,14 +144,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">"tidyverse"</span>,</span>
 <span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">"kableExtra"</span>,</span>
 <span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">"IRdisplay"</span>,</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># NEW</span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">"torch"</span>,</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">"torchvision"</span>,</span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">"luz"</span></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="co"># renv::install(packages)</span></span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(packages, require, <span class="at">character.only=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">"car"</span>,</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">"corrplot"</span>,</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># NEW</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">"torch"</span>,</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    <span class="st">"torchvision"</span>,</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    <span class="st">"luz"</span>,</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Dimension reduction</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>    <span class="st">"dimRed"</span>,</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>    <span class="st">"RSpectra"</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="co"># renv::install(packages)</span></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(packages, require, <span class="at">character.only =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <hr>
 </section>
@@ -1053,42 +1058,485 @@ Z_2 = v_{12} X_1 + v_{22} X_2 + \dots v_{p2} X_p
 </ul>
 <p><br><br></p>
 <p><br><br></p>
+<hr>
 </section>
 </section>
 </section>
+</section>
+<section id="tue-apr-18" class="level1">
+<h1>Tue, Apr 18</h1>
 <section id="example-in-r" class="level2">
 <h2 class="anchored" data-anchor-id="example-in-r">Example in <code>R</code></h2>
 <p>In R, we can use the built-in function prcomp() to perform PCA.</p>
-<div class="cell" data-tags="[]" data-hash="index_cache/html/unnamed-chunk-26_ee95fe47b7780daa3d77d11ef65561b6">
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-26_85e36cc391b557e6248ba5e2612f8620">
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
 <span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">x1 =</span> <span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>),</span>
-<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">x2 =</span> x1 <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="fl">0.1</span>)</span>
-<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">x2 =</span> x1 <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="fl">0.1</span>),</span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">x3 =</span> x1 <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="fl">0.1</span>)</span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data) <span class="sc">%&gt;%</span> knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:right;"> x1 </th>
+   <th style="text-align:right;"> x2 </th>
+   <th style="text-align:right;"> x3 </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> -0.7465566 </td>
+   <td style="text-align:right;"> -0.8090559 </td>
+   <td style="text-align:right;"> -0.5984723 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> -0.9672123 </td>
+   <td style="text-align:right;"> -1.0085493 </td>
+   <td style="text-align:right;"> -1.0918980 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> -1.6703027 </td>
+   <td style="text-align:right;"> -1.6894029 </td>
+   <td style="text-align:right;"> -1.7013794 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> -0.5761331 </td>
+   <td style="text-align:right;"> -0.4869523 </td>
+   <td style="text-align:right;"> -0.6025702 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1.4745745 </td>
+   <td style="text-align:right;"> 1.5335477 </td>
+   <td style="text-align:right;"> 1.5259974 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> -0.5154233 </td>
+   <td style="text-align:right;"> -0.4714511 </td>
+   <td style="text-align:right;"> -0.3921585 </td>
+  </tr>
+</tbody>
+</table>
+
 </div>
-<div class="cell" data-tags="[]" data-hash="index_cache/html/unnamed-chunk-27_8cfb85c475b890b865f982f4f8f30993">
+</div>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-27_0f0369afed7debc5817cf39adb039852">
 <div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>pca <span class="ot">&lt;-</span> <span class="fu">princomp</span>(data, <span class="at">cor =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(pca)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Importance of components:
-                          Comp.1      Comp.2
-Standard deviation     1.4123136 0.073282039
-Proportion of Variance 0.9973149 0.002685129
-Cumulative Proportion  0.9973149 1.000000000</code></pre>
+                         Comp.1      Comp.2      Comp.3
+Standard deviation     1.728207 0.096348192 0.063396007
+Proportion of Variance 0.995566 0.003094325 0.001339685
+Cumulative Proportion  0.995566 0.998660315 1.000000000</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>pca<span class="sc">$</span>loadings</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-28_2f8b2a489831d4664ff7acb2f555fc5e">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">screeplot</span>(pca, <span class="at">type=</span><span class="st">"l"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-28-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-29_74d882bfcdbde94d0bad63a4ee40648d">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>Z_pca <span class="ot">&lt;-</span> <span class="fu">predict</span>(pca, data)</span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-29-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Z_pca)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-29-2.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-30_c6f9632d7426ab5a6023e2374f72ac04">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>pca<span class="sc">$</span>loadings</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Loadings:
-   Comp.1 Comp.2
-x1  0.707  0.707
-x2  0.707 -0.707
+   Comp.1 Comp.2 Comp.3
+x1  0.578         0.816
+x2  0.577 -0.708 -0.408
+x3  0.577  0.707 -0.409
 
-               Comp.1 Comp.2
-SS loadings       1.0    1.0
-Proportion Var    0.5    0.5
-Cumulative Var    0.5    1.0</code></pre>
+               Comp.1 Comp.2 Comp.3
+SS loadings     1.000  1.000  1.000
+Proportion Var  0.333  0.333  0.333
+Cumulative Var  0.333  0.667  1.000</code></pre>
 </div>
 </div>
+<hr>
+<section id="interpretation-of-principal-components" class="level3">
+<h3 class="anchored" data-anchor-id="interpretation-of-principal-components">Interpretation of principal components</h3>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-31_a08a0ac081de564aad5d0c7e0babeb7d">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">42</span>)</span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">500</span></span>
+<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a>science <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n, <span class="at">mean =</span> <span class="dv">60</span>, <span class="at">sd =</span> <span class="dv">10</span>)</span>
+<span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a>humanities <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n, <span class="at">mean =</span> <span class="dv">80</span>, <span class="at">sd=</span><span class="dv">10</span>)</span>
+<span id="cb57-6"><a href="#cb57-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-7"><a href="#cb57-7" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb57-8"><a href="#cb57-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">math =</span> <span class="fl">0.8</span> <span class="sc">*</span> science <span class="sc">+</span> <span class="fu">rnorm</span>(n, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">7</span>),</span>
+<span id="cb57-9"><a href="#cb57-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">physics =</span> <span class="fl">1.0</span> <span class="sc">*</span> science <span class="sc">+</span> <span class="fu">rnorm</span>(n, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">5</span>),</span>
+<span id="cb57-10"><a href="#cb57-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">chemistry =</span> <span class="fl">1.3</span> <span class="sc">*</span> science <span class="sc">+</span> <span class="fu">rnorm</span>(n, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">3</span>),</span>
+<span id="cb57-11"><a href="#cb57-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">history =</span> <span class="fl">0.8</span> <span class="sc">*</span> humanities <span class="sc">+</span> <span class="fu">rnorm</span>(n, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">5</span>),</span>
+<span id="cb57-12"><a href="#cb57-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">geography =</span> <span class="fl">1.0</span> <span class="sc">*</span> humanities <span class="sc">+</span> <span class="fu">rnorm</span>(n, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">10</span>),</span>
+<span id="cb57-13"><a href="#cb57-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">literature =</span> <span class="fl">1.2</span> <span class="sc">*</span> humanities <span class="sc">+</span> <span class="fu">rnorm</span>(n, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">2</span>)</span>
+<span id="cb57-14"><a href="#cb57-14" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-32_1b8a4c97fb1e124ad98d2031d3e71278">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span></span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">head</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">round</span>(<span class="at">digits =</span> <span class="dv">2</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a>    knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:right;"> math </th>
+   <th style="text-align:right;"> physics </th>
+   <th style="text-align:right;"> chemistry </th>
+   <th style="text-align:right;"> history </th>
+   <th style="text-align:right;"> geography </th>
+   <th style="text-align:right;"> literature </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 75.24 </td>
+   <td style="text-align:right;"> 70.70 </td>
+   <td style="text-align:right;"> 96.57 </td>
+   <td style="text-align:right;"> 75.32 </td>
+   <td style="text-align:right;"> 83.43 </td>
+   <td style="text-align:right;"> 108.93 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 47.15 </td>
+   <td style="text-align:right;"> 53.67 </td>
+   <td style="text-align:right;"> 69.83 </td>
+   <td style="text-align:right;"> 71.30 </td>
+   <td style="text-align:right;"> 81.22 </td>
+   <td style="text-align:right;"> 104.37 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 57.70 </td>
+   <td style="text-align:right;"> 58.69 </td>
+   <td style="text-align:right;"> 77.55 </td>
+   <td style="text-align:right;"> 63.52 </td>
+   <td style="text-align:right;"> 75.91 </td>
+   <td style="text-align:right;"> 95.74 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 55.70 </td>
+   <td style="text-align:right;"> 70.49 </td>
+   <td style="text-align:right;"> 80.21 </td>
+   <td style="text-align:right;"> 67.09 </td>
+   <td style="text-align:right;"> 69.87 </td>
+   <td style="text-align:right;"> 97.45 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 44.26 </td>
+   <td style="text-align:right;"> 60.07 </td>
+   <td style="text-align:right;"> 79.38 </td>
+   <td style="text-align:right;"> 61.18 </td>
+   <td style="text-align:right;"> 83.96 </td>
+   <td style="text-align:right;"> 87.11 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 42.97 </td>
+   <td style="text-align:right;"> 60.64 </td>
+   <td style="text-align:right;"> 77.72 </td>
+   <td style="text-align:right;"> 62.33 </td>
+   <td style="text-align:right;"> 69.22 </td>
+   <td style="text-align:right;"> 91.86 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-33_98dfd22265b91bccf986e7892f16f75e">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(df<span class="sc">$</span>math, df<span class="sc">$</span>physics)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-33-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-34_d943e77cbaefa952a66cb067b021ccd0">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>pca <span class="ot">&lt;-</span> <span class="fu">princomp</span>(df, <span class="at">cor=</span><span class="cn">TRUE</span>)</span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(pca)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Importance of components:
+                          Comp.1    Comp.2     Comp.3     Comp.4     Comp.5
+Standard deviation     1.5860772 1.5585727 0.65113393 0.59751444 0.38083707
+Proportion of Variance 0.4192735 0.4048581 0.07066257 0.05950392 0.02417281
+Cumulative Proportion  0.4192735 0.8241316 0.89479419 0.95429811 0.97847093
+                           Comp.6
+Standard deviation     0.35940847
+Proportion of Variance 0.02152907
+Cumulative Proportion  1.00000000</code></pre>
+</div>
+</div>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-35_18cbc74292b7b73501caa4b090396d2b">
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>pca<span class="sc">$</span>loadings</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Loadings:
+           Comp.1 Comp.2 Comp.3 Comp.4 Comp.5 Comp.6
+math        0.544                0.820         0.147
+physics     0.580               -0.501         0.636
+chemistry   0.595               -0.264        -0.755
+history            0.572  0.582        -0.571       
+geography          0.543 -0.795        -0.261       
+literature         0.604  0.159         0.774       
+
+               Comp.1 Comp.2 Comp.3 Comp.4 Comp.5 Comp.6
+SS loadings     1.000  1.000  1.000  1.000  1.000  1.000
+Proportion Var  0.167  0.167  0.167  0.167  0.167  0.167
+Cumulative Var  0.167  0.333  0.500  0.667  0.833  1.000</code></pre>
+</div>
+</div>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-36_01bd01ee1309ed344e429787f1b18ca4">
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pca, <span class="at">type=</span><span class="st">"l"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-36-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<hr>
+<section id="principal-component-regression" class="level4">
+<h4 class="anchored" data-anchor-id="principal-component-regression">Principal component regression</h4>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-37_3b05bf0699bd453d578c3f6c60a0d128">
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>gpa <span class="ot">&lt;-</span> (<span class="fl">0.9</span> <span class="sc">*</span> science <span class="sc">+</span> <span class="fl">0.5</span> <span class="sc">*</span> humanities <span class="sc">+</span> <span class="fu">rnorm</span>(n, <span class="at">mean=</span><span class="dv">0</span>, <span class="at">sd=</span><span class="dv">10</span>)) <span class="sc">*</span> <span class="dv">4</span> <span class="sc">/</span> <span class="dv">100</span></span>
+<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
+<span id="cb65-4"><a href="#cb65-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">head</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb65-5"><a href="#cb65-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">round</span>(<span class="at">digits=</span><span class="dv">2</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb65-6"><a href="#cb65-6" aria-hidden="true" tabindex="-1"></a>    knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:right;"> math </th>
+   <th style="text-align:right;"> physics </th>
+   <th style="text-align:right;"> chemistry </th>
+   <th style="text-align:right;"> history </th>
+   <th style="text-align:right;"> geography </th>
+   <th style="text-align:right;"> literature </th>
+   <th style="text-align:right;"> gpa </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 75.24 </td>
+   <td style="text-align:right;"> 70.70 </td>
+   <td style="text-align:right;"> 96.57 </td>
+   <td style="text-align:right;"> 75.32 </td>
+   <td style="text-align:right;"> 83.43 </td>
+   <td style="text-align:right;"> 108.93 </td>
+   <td style="text-align:right;"> 4.40 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 47.15 </td>
+   <td style="text-align:right;"> 53.67 </td>
+   <td style="text-align:right;"> 69.83 </td>
+   <td style="text-align:right;"> 71.30 </td>
+   <td style="text-align:right;"> 81.22 </td>
+   <td style="text-align:right;"> 104.37 </td>
+   <td style="text-align:right;"> 3.41 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 57.70 </td>
+   <td style="text-align:right;"> 58.69 </td>
+   <td style="text-align:right;"> 77.55 </td>
+   <td style="text-align:right;"> 63.52 </td>
+   <td style="text-align:right;"> 75.91 </td>
+   <td style="text-align:right;"> 95.74 </td>
+   <td style="text-align:right;"> 3.76 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 55.70 </td>
+   <td style="text-align:right;"> 70.49 </td>
+   <td style="text-align:right;"> 80.21 </td>
+   <td style="text-align:right;"> 67.09 </td>
+   <td style="text-align:right;"> 69.87 </td>
+   <td style="text-align:right;"> 97.45 </td>
+   <td style="text-align:right;"> 4.17 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 44.26 </td>
+   <td style="text-align:right;"> 60.07 </td>
+   <td style="text-align:right;"> 79.38 </td>
+   <td style="text-align:right;"> 61.18 </td>
+   <td style="text-align:right;"> 83.96 </td>
+   <td style="text-align:right;"> 87.11 </td>
+   <td style="text-align:right;"> 2.96 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 42.97 </td>
+   <td style="text-align:right;"> 60.64 </td>
+   <td style="text-align:right;"> 77.72 </td>
+   <td style="text-align:right;"> 62.33 </td>
+   <td style="text-align:right;"> 69.22 </td>
+   <td style="text-align:right;"> 91.86 </td>
+   <td style="text-align:right;"> 3.28 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-38_b2620e5f3c8943697c970a3f99e9030b">
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>lm_fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(gpa <span class="sc">~</span> ., df)</span>
+<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm_fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = gpa ~ ., data = df)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-1.12706 -0.29370  0.01835  0.28236  1.25832 
+
+Coefficients:
+             Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) -0.017263   0.187783  -0.092   0.9268    
+math         0.004944   0.002671   1.851   0.0647 .  
+physics      0.004557   0.003467   1.315   0.1892    
+chemistry    0.018271   0.003217   5.680 2.31e-08 ***
+history     -0.004430   0.003469  -1.277   0.2022    
+geography    0.002817   0.001873   1.504   0.1332    
+literature   0.019673   0.003171   6.205 1.16e-09 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 0.4241 on 493 degrees of freedom
+Multiple R-squared:  0.4736,    Adjusted R-squared:  0.4671 
+F-statistic: 73.91 on 6 and 493 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-39_8a01adf962f23f2e505ec448c4a99bc6">
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="fu">vif</span>(lm_fit) <span class="sc">%&gt;%</span> t</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>         math  physics chemistry  history geography literature
+[1,] 2.187701 3.992511  4.760329 3.204141  2.091827   4.368502</code></pre>
+</div>
+</div>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-40_14e96c96b0e4d85480fc5723a6e5da55">
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
+<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cor</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">corrplot</span>(<span class="at">diag=</span>F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-40-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-41_25ad742718c9295366545a53c9800237">
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>pca <span class="ot">&lt;-</span> <span class="fu">princomp</span>(df <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>gpa), <span class="at">cor=</span><span class="cn">TRUE</span>)</span>
+<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a><span class="fu">screeplot</span>(pca)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-41-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-42_87cc3af0cfdab4bdb914d2a00ff943e1">
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>Z <span class="ot">&lt;-</span> <span class="fu">predict</span>(pca, df)</span>
+<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a>df_pca <span class="ot">&lt;-</span> Z <span class="sc">%&gt;%</span> </span>
+<span id="cb72-4"><a href="#cb72-4" aria-hidden="true" tabindex="-1"></a>    as_tibble <span class="sc">%&gt;%</span> </span>
+<span id="cb72-5"><a href="#cb72-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(Comp<span class="fl">.1</span>, Comp<span class="fl">.2</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb72-6"><a href="#cb72-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">gpa =</span> df<span class="sc">$</span>gpa)</span>
+<span id="cb72-7"><a href="#cb72-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb72-8"><a href="#cb72-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df_pca) <span class="sc">%&gt;%</span> knitr<span class="sc">::</span><span class="fu">kable</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:right;"> Comp.1 </th>
+   <th style="text-align:right;"> Comp.2 </th>
+   <th style="text-align:right;"> gpa </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 2.7037738 </td>
+   <td style="text-align:right;"> 1.8078753 </td>
+   <td style="text-align:right;"> 4.402650 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> -0.8243280 </td>
+   <td style="text-align:right;"> 0.8429457 </td>
+   <td style="text-align:right;"> 3.414104 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 0.4763584 </td>
+   <td style="text-align:right;"> -0.0850971 </td>
+   <td style="text-align:right;"> 3.760019 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1.1033923 </td>
+   <td style="text-align:right;"> 0.0555130 </td>
+   <td style="text-align:right;"> 4.166295 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> -0.0155603 </td>
+   <td style="text-align:right;"> -0.4092377 </td>
+   <td style="text-align:right;"> 2.963712 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> -0.1197505 </td>
+   <td style="text-align:right;"> -0.6725353 </td>
+   <td style="text-align:right;"> 3.282428 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-43_2aeeb6a1d15a57c278e8171f902c4c81">
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a>df_pca <span class="sc">%&gt;%</span> </span>
+<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cor</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">corrplot</span>(<span class="at">diag=</span>F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-43-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-44_d4dfe8e91c97b77a91f0dce384248050">
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>lm_pca <span class="ot">&lt;-</span> <span class="fu">lm</span>(gpa <span class="sc">~</span> ., df_pca)</span>
+<span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm_pca)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = gpa ~ ., data = df_pca)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-1.22601 -0.30774  0.01379  0.28813  1.25162 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  3.73356    0.01940  192.43   &lt;2e-16 ***
+Comp.1       0.17880    0.01223   14.62   &lt;2e-16 ***
+Comp.2       0.16893    0.01245   13.57   &lt;2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 0.4338 on 497 degrees of freedom
+Multiple R-squared:  0.4446,    Adjusted R-squared:  0.4423 
+F-statistic: 198.9 on 2 and 497 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-45_a9f4cdfc01cb31084524db0cb98bf9aa">
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="fu">vif</span>(lm_pca) <span class="sc">%&gt;%</span> t</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     Comp.1 Comp.2
+[1,]      1      1</code></pre>
+</div>
+</div>
+</section>
+</section>
 </section>
 </section>
 

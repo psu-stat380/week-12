@@ -36,19 +36,14 @@ packages <- c(
     "tidyverse",
     "kableExtra",
     "IRdisplay",
-    "car",
-    "corrplot",
     # NEW
     "torch",
     "torchvision",
-    "luz",
-    # Dimension reduction
-    "dimRed",
-    "RSpectra"
+    "luz"
 )
 
 # renv::install(packages)
-sapply(packages, require, character.only = TRUE)
+sapply(packages, require, character.only=TRUE)
 ```
 
 ---
@@ -651,150 +646,21 @@ such that:
 
 <br><br>
 
----
-
-# Tue, Apr 18
-
 ## Example in `R`
 
 In R, we can use the built-in function prcomp() to perform PCA.
 
-
 ```{r}
+#| tags: []
 data <- tibble(
   x1 = rnorm(100, mean = 0, sd = 1),
-  x2 = x1 + rnorm(100, mean = 0, sd = 0.1),
-  x3 = x1 + rnorm(100, mean = 0, sd = 0.1)
+  x2 = x1 + rnorm(100, mean = 0, sd = 0.1)
 )
-
-head(data) %>% knitr::kable()
 ```
 
 ```{r}
+#| tags: []
 pca <- princomp(data, cor = TRUE)
 summary(pca)
-```
-
-```{r}
-screeplot(pca, type="l")
-```
-
-```{r}
-par(mfrow=c(1, 2))
-
-Z_pca <- predict(pca, data)
-plot(data)
-plot(Z_pca)
-```
-
-```{r}
 pca$loadings
-```
-
-
----
-
-
-### Interpretation of principal components
-
-
-```{r}
-set.seed(42)
-
-n <- 500
-science <- rnorm(n, mean = 60, sd = 10)
-humanities <- rnorm(n, mean = 80, sd=10)
-
-df <- tibble(
-  math = 0.8 * science + rnorm(n, mean = 0, sd = 7),
-  physics = 1.0 * science + rnorm(n, mean = 0, sd = 5),
-  chemistry = 1.3 * science + rnorm(n, mean = 0, sd = 3),
-  history = 0.8 * humanities + rnorm(n, mean = 0, sd = 5),
-  geography = 1.0 * humanities + rnorm(n, mean = 0, sd = 10),
-  literature = 1.2 * humanities + rnorm(n, mean = 0, sd = 2)
-)
-```
-
-```{r}
-df %>%
-    head() %>%
-    round(digits = 2) %>%
-    knitr::kable()
-```
-
-```{r}
-plot(df$math, df$physics)
-```
-
-```{r}
-pca <- princomp(df, cor=TRUE)
-summary(pca)
-```
-
-```{r}
-pca$loadings
-```
-
-```{r}
-plot(pca, type="l")
-```
-
-
----
-
-#### Principal component regression
-
-```{r}
-df$gpa <- (0.9 * science + 0.5 * humanities + rnorm(n, mean=0, sd=10)) * 4 / 100
-
-df %>% 
-    head() %>%
-    round(digits=2) %>%
-    knitr::kable()
-```
-
-```{r}
-lm_fit <- lm(gpa ~ ., df)
-summary(lm_fit)
-```
-
-```{r}
-vif(lm_fit) %>% t
-```
-
-```{r}
-df %>% 
-    cor() %>% 
-    corrplot(diag=F)
-```
-
-```{r}
-pca <- princomp(df %>% select(-gpa), cor=TRUE)
-screeplot(pca)
-```
-
-```{r}
-Z <- predict(pca, df)
-
-df_pca <- Z %>% 
-    as_tibble %>% 
-    select(Comp.1, Comp.2) %>% 
-    mutate(gpa = df$gpa)
-
-head(df_pca) %>% knitr::kable()
-```
-
-```{r}
-df_pca %>% 
-    cor() %>% 
-    corrplot(diag=F)
-```
-    
-```{r}
-lm_pca <- lm(gpa ~ ., df_pca)
-summary(lm_pca)
-```
-
-```{r}
-vif(lm_pca) %>% t
 ```
