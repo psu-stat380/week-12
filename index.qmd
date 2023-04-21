@@ -798,3 +798,220 @@ summary(lm_pca)
 ```{r}
 vif(lm_pca) %>% t
 ```
+
+----
+
+# Nonlinear dimension reduction
+
+```{r}
+generate_two_spirals <- function(){
+  set.seed(42)
+  n <- 500
+  noise <- 0.05
+  t <- (1:n) / n * 4 * pi
+  x1 <- t * (sin(t) + rnorm(n, 0, noise))
+  x2 <- t * (cos(t) + rnorm(n, 0, noise))
+  y  <- t
+  return(tibble(x1=x1, x2=x2, y=y))
+}
+```
+
+```{r}
+df <- generate_two_spirals()
+head(df)
+```
+
+```{r}
+ggplot(df) +
+    geom_point(aes(x=x1, y=x2, col=y), alpha=0.5) +
+    scale_colour_gradient(low="red", high="blue")
+
+```
+    
+```{r}
+pca <- princomp(df[, 1:2], cor=T)
+pca$loadings
+```
+
+```{r}
+df_pca <- predict(pca, df)
+head(df_pca)
+```
+
+```{r}
+ggplot(as_tibble(df_pca)) +
+    geom_point(aes(x=Comp.1, y=0, col=df$y), alpha=0.5) +
+    scale_colour_gradient(low="red", high="blue")
+```
+
+```{r}
+library(RDRToolbox)
+isomap <- Isomap(df[, 1:2] %>% as.matrix, dims=1)
+
+```
+
+```{r}
+ggplot(as_tibble(isomap)) +
+    geom_point(aes(x=dim1, y=0, col=df$y)) +
+    scale_colour_gradient(low="red", high="blue")
+```
+
+
+---
+
+# Autoencoder
+
+
+![Autoencoder](https://miro.medium.com/v2/resize:fit:4800/format:webp/1*ydTBLRhllAgnqXUO5CSonQ.png)
+
+[image source](https://miro.medium.com/v2/resize:fit:4800/format:webp/1*ydTBLRhllAgnqXUO5CSonQ.png)
+
+
+```{r}
+autoencoder <- nn_module(
+    initialize = function(p, q1, q2, q3, o) {
+    self$encoder <- nn_sequential(
+        nn_linear(p, q1), nn_relu(),
+        nn_linear(q1, q2), nn_relu(),
+        nn_linear(q2, q3), nn_relu(),
+        nn_linear(q3, o)
+    )
+    self$decoder <- nn_sequential(
+        nn_linear(o, q3), nn_relu(),
+        nn_linear(q3, q2), nn_relu(),
+        nn_linear(q2, q1), nn_relu(),
+        nn_linear(q1, p)
+    )
+    },
+    forward = function(x) {
+    x %>%
+        torch_reshape(c(-1, 28 * 28)) %>% 
+        self$encoder() %>%
+        self$decoder() %>% 
+        torch_reshape(c(-1, 28, 28))
+    },
+    predict = function(x) {
+    x %>% 
+        torch_reshape(c(-1, 28 * 28)) %>% 
+        self$encoder()     
+    }
+)
+```
+
+
+```{r}
+X <- test_ds
+inputs <- torch_tensor(X$data * 1.0)
+```
+
+
+```{r}
+plot_image = \(x) image(t(x)[1:28, 28:1], useRaster=TRUE, axes=FALSE, col=gray.colors(1000))
+```
+
+
+#### Original vs. Decoded (at initialization)
+
+```{r}
+AE <- autoencoder(p = 28 * 28, q1 = 32, q2 = 16, q3 = 8, o = 2)
+```
+
+```{r, plot.width=10, plot.height=5}
+par(mfrow=c(4, 2))
+
+set.seed(123)
+for(k in 1:4){
+    i <- sample(1:10000, 1)
+    input <- inputs[i]
+    output <- AE(inputs[i:i])[1]
+
+    par(mfrow=c(1, 2))
+    plot_image(inputs[i] %>% as_array)
+    title("Original")
+    
+    plot_image(output %>% as_array)
+    title("Decoded")
+}
+```
+
+
+#### Fitting the autoencoder using `luz`
+
+```{r}
+ae_fit <- autoencoder %>%
+    setup(
+        loss = nn_mse_loss(),
+        optimizer = optim_adam
+    ) %>%
+
+    set_hparams(
+        p=28*28, q1=128, q2=64, q3=32, o=2
+    ) %>%
+    
+    set_opt_hparams(
+        lr=1e-3
+    ) %>%
+
+    fit(
+        data = list(
+            inputs, 
+            inputs # targets are the same as inputs
+        ),
+        epochs=30,
+        verbose=TRUE,
+        dataloader_options = list(
+            batch_size = 100, 
+            shuffle=TRUE
+        ),
+        callbacks = list(
+            luz_callback_lr_scheduler(
+                torch::lr_step, 
+                step_size = 10, 
+                gamma=1.01
+                )
+        )
+    )
+
+```
+
+```{r}
+plot(ae_fit)
+```
+
+
+#### Lower-dimensional Encoding of the Data
+
+```{r}
+X_dim2 <- predict(ae_fit, inputs) %>% as_array()
+head(X_dim2)
+df_ae <- tibble(
+    x1 = X_dim2[, 1],
+    x2 = X_dim2[, 2],
+    y = as.factor(X$targets - 1)
+)
+
+ggplot(df_ae) +
+    geom_point(aes(x=x1, y=x2, col=y))
+```
+
+
+
+#### Original vs. Decoded (after fitting)
+
+```{r, plot.width=10, plot.height=5}
+par(mfrow=c(4, 2))
+
+set.seed(123)
+for(k in 1:4){
+    i <- sample(1:10000, 1)
+    input <- inputs[i]
+    output <- ae_fit$model$forward(inputs[i:i])[1]
+
+    par(mfrow=c(1, 2))
+    plot_image(inputs[i] %>% as_array)
+    title("Original")
+    
+    plot_image(output %>% as_array)
+    title("Decoded")
+}
+```
